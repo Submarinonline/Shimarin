@@ -16,6 +16,11 @@
     function clickBtn2(){
         document.form1.textarea1.value = "";
     }
+    function clickBtn3(){
+        var text = document.getElementsByName("textarea2")[0];
+        text.select();
+        document.execCommand("copy");
+    }
 </script>
 
 <body>
@@ -24,9 +29,10 @@
     </form>
     <input type="button" value="変換する" onclick="clickBtn1()"/>
     <input type="button" value="クリア" onclick="clickBtn2()"/>
+    <input type="button" value="コピー" onclick="clickBtn3()"/>
     <form name="form2">
     <br>
-    <textarea name="textarea2" value="1" cols="50" rows=5 maxlength="15"></textarea>
+    <textarea id="textarea" name="textarea2" value="1" cols="50" rows=5 maxlength="15"></textarea>
     </form>
 </body>
 
