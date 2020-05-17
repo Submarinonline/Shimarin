@@ -6,3 +6,4 @@
 - Alt+right...進む
 - Control+H...サイトを表示
 - Alt+Home...Submarinのtop
+- Control+E...怪しい日本語に変換するやつを表示
