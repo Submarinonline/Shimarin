@@ -57,4 +57,27 @@ function shortcut() {
   localShortcut.register(mainWindow, 'Alt+Home', function() {
     mainWindow.loadURL('https://submarin.online/');
   });
+
+  localShortcut.register(mainWindow, 'CommandOrControl+E', function() {
+    subWindow = new BrowserWindow({width: 700, height: 500, 'icon': __dirname + '/icon.ico'});
+    subWindow.setMenu(null);
+    subWindow.setTitle("怪レい日本语");
+    subWindow.loadURL('file://' + __dirname + '/henkan.html');
+
+    localShortcut.register(subWindow, 'CommandOrControl+Q', function() {
+      subWindow.close()
+    });
+  
+    localShortcut.register(subWindow, ['CommandOrControl+R', 'F5'], function() {
+      subWindow.reload()
+    });
+  
+    localShortcut.register(subWindow, 'F11', function() {
+      if (subWindow.isFullScreen()) {
+        subWindow.setSimpleFullScreen(false)
+      } else {
+        subWindow.setSimpleFullScreen(true)
+      }
+    });
+  });
 }
