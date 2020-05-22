@@ -51,7 +51,11 @@ function shortcut() {
   });
 
   localShortcut.register(mainWindow, 'CommandOrControl+H', function() {
-    mainWindow.loadURL('https://sites.google.com/view/submarin/top');
+    mainWindow.loadURL('https://about.submarin.online');
+  });
+
+  localShortcut.register(mainWindow, 'CommandOrControl+Shift+H', function() {
+    mainWindow.loadURL('https://github.com/shaaaaaQ/Shimarin/blob/master/README.md');
   });
 
   localShortcut.register(mainWindow, 'Alt+Home', function() {
