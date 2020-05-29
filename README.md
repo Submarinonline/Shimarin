@@ -10,3 +10,13 @@
 - Alt+Home...Submarinのtopに戻る
 - Control+E...怪しい日本語に変換するやつを表示
 - Control+Shift+H...READMEを表示
+## 使い方
+[releases](https://github.com/shaaaaaQ/Shimarin/releases)から最新のやつをダウンロード  
+Linux
+```
+./Submarin-Electron
+```
+Windows
+```
+Submarin-Electron.exe
+```
