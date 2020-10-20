@@ -1,5 +1,6 @@
+const path = require('path');
 const electron = require('electron');
-const shortcut = require(__dirname + '/shortcut.js')
+const shortcut = require(__dirname + '/shortcut.js');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
@@ -16,7 +17,7 @@ app.on('ready', function () {
   win = new BrowserWindow({
     width: 1000,
     height: 800,
-    'icon': __dirname + '/icon.ico',
+    'icon': path.join(__dirname, '../icon.ico'),
   });
   win.setMenu(null);
   win.setTitle("Submarin");
