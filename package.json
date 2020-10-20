@@ -8,5 +8,9 @@
   "license": "MIT",
   "dependencies": {
     "electron-localshortcut": "^3.2.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^15.1.0",
+    "gulp": "^4.0.2"
   }
 }
