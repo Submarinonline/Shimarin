@@ -44,6 +44,8 @@ function showSubWin() {
   subwin.setTitle('Submarin');
   subwin.loadURL(__dirname + '/henkan.html');
 
+  subShortcuts();
+
   subwin.on('close', (event) => {
     event.preventDefault();
     subwin.hide();
@@ -89,5 +91,35 @@ function mainShortcuts() {
 
   localShortcut.register(win, 'Alt+Home', function () {
       win.loadURL('https://submarin.online/');
+  });
+};
+
+function subShortcuts() {
+  localShortcut.register(subwin, 'CommandOrControl+Q', function () {
+    subwin.hide();
+  });
+
+  localShortcut.register(subwin, ['CommandOrControl+R', 'F5'], function () {
+      subwin.reload();
+  });
+
+  localShortcut.register(subwin, 'F11', function () {
+      if (subwin.isFullScreen()) {
+          subwin.setSimpleFullScreen(false);
+      } else {
+          subwin.setSimpleFullScreen(true);
+      }
+  });
+
+  localShortcut.register(subwin, 'F12', function () {
+      subwin.openDevTools();
+  })
+
+  localShortcut.register(subwin, 'Alt+Left', function () {
+      subwin.webContents.goBack();
+  });
+
+  localShortcut.register(subwin, 'Alt+Right', function () {
+      subwin.webContents.goForward();
   });
 };
