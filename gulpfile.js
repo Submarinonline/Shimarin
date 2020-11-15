@@ -7,7 +7,6 @@ gulp.task('package-win', function(done) {
       out: 'out',
       arch: 'x64',
       platform: 'win32',
-      electronVersion: '8.5.2',
       overwrite: true,
       icon: 'icon.ico',
       ignore: '(.gitignore|gulpfile.js|package-lock.json)',
