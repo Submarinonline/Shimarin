@@ -1,0 +1,49 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#titlebar {
+    -webkit-app-region: drag;
+    user-select: none;
+    background: #254053;
+    display: flex;
+}
+
+.window-ctl {
+    -webkit-app-region: no-drag;
+    margin-left: auto;
+    display: flex;
+}
+
+.window-ctl div {
+    color: #ffffff;
+}
+
+.window-ctl div:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.tab {
+    -webkit-app-region: no-drag;
+    display: flex;
+}
+.tab input {
+    display: none;
+}
+
+.tab-label {
+    color: #ffffff;
+}
+
+.tab-label:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.tab input:checked + .tab-label {
+    color: #41ADEF;
+}
+
+.cont {
+    display: none;
+}
