@@ -12,7 +12,7 @@ app.on('ready', function () {
     win = new BrowserWindow({
         width: 1000,
         height: 800,
-        // frame: false,
+        frame: false,
         'icon': path.join(__dirname, '../icon.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
@@ -20,8 +20,8 @@ app.on('ready', function () {
     });
     win.setMenu(null);
     win.setTitle('Submarin');
-    // win.loadURL(`${__dirname}/index.html`)
-    win.loadURL('https://submarin.online/');
+    win.loadURL(`${__dirname}/index.html`)
+    // win.loadURL('https://submarin.online/');
 
     mainShortcuts();
 
