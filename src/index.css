@@ -17,38 +17,49 @@ html, body {
     margin: 0;
 }
 
+body {
+    background: var(--titlebar);
+}
+
 ul {
     margin: 0px;
     padding: 0px;
-    display: flex;
     list-style: none;
+    display: grid;
 }
 
 li {
     color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 iframe {
     width: 100%;
-    height: calc(100vh - 28px);
+    height: calc(100vh - 32px);
     border: 0;
-}
-
-#tabs li:hover {
-    background: var(--text-hover)
 }
 
 #titlebar {
     -webkit-app-region: drag;
     user-select: none;
     background: var(--titlebar);
-    height: 28px;
+    height: 32px;
     display: flex;
 }
 
+#tabs {
+    grid-template-columns: 100px 100px 100px;
+}
+
+#tabs li:hover {
+    background: var(--text-hover)
+}
 
 #window-ctl {
     -webkit-app-region: no-drag;
+    grid-template-columns: 40px 40px 40px 40px;
     margin-left: auto;
 }
 
