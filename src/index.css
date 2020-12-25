@@ -37,15 +37,14 @@ li {
     justify-content: center;
 }
 
+svg {
+    fill: var(--text);
+}
+
 iframe {
     width: 100%;
     height: calc(100vh - 32px);
     border: 0;
-}
-
-img {
-    width: 100%;
-    height: 100%;
 }
 
 #titlebar {
@@ -54,14 +53,6 @@ img {
     background: var(--titlebar);
     height: 32px;
     display: flex;
-}
-
-#tabs {
-    grid-template-columns: 130px 130px 130px;
-}
-
-#tabs li:hover {
-    background: var(--text-hover);
 }
 
 #window-ctl {
@@ -84,6 +75,14 @@ img {
 
 #close {
     grid-column: 3;
+}
+
+#tabs {
+    grid-template-columns: 130px 130px 130px;
+}
+
+#tabs li:hover {
+    background: var(--text-hover);
 }
 
 .tab {

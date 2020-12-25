@@ -5,9 +5,6 @@
 - Control+R or F5...reload
 - F11...全画面のやつ
 - F12...DevToolsを開く
-- Alt+left...戻る
-- Alt+right...進む
-- Alt+Home...Submarinのtopに戻る
 ## 使い方
 [releases](https://github.com/shaaaaaQ/Shimarin/releases)から最新のやつをダウンロード  
 Linux
