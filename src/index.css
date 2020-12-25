@@ -1,16 +1,14 @@
 :root {
     --text:  #000000;
-    --text-active: #41ADEF;
-    --text-hover: #e6e6e6;
-    --titlebar: #ffffff;
+    --text-hover: #ffffff;
+    --titlebar: #e6e6e6;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --text:  #ffffff;
-        --text-active: #41ADEF;
-        --text-hover: #414141;
-        --titlebar: #121212;
+        --text-hover: #121212;
+        --titlebar: #414141;
     }
 }
 
@@ -30,7 +28,13 @@ li {
     color: var(--text);
 }
 
-li:hover {
+iframe {
+    width: 100%;
+    height: calc(100vh - 28px);
+    border: 0;
+}
+
+#tabs li:hover {
     background: var(--text-hover)
 }
 
@@ -38,11 +42,12 @@ li:hover {
     -webkit-app-region: drag;
     user-select: none;
     background: var(--titlebar);
+    height: 28px;
     display: flex;
 }
 
 
-.window-ctl {
+#window-ctl {
     -webkit-app-region: no-drag;
     margin-left: auto;
 }
@@ -52,9 +57,13 @@ li:hover {
 }
 
 .tab.active {
-    color: var(--text-active)
+    background: var(--text-hover)
 }
 
 .cont {
     display: none;
+}
+
+.cont.show {
+    display: block;
 }

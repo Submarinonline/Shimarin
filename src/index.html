@@ -6,32 +6,35 @@
 
 <body>
     <header id="titlebar">
-        <ul>
-            <li class="tab active">Submarin</li>
+        <ul id="tabs">
+            <li class="tab active" id="submarin">Submarin</li>
 
-            <li class="tab">Tools</li>
+            <li class="tab" id="tools">Tools</li>
 
-            <li class="tab">Settings</li>
+            <li class="tab" id="settings">Settings</li>
         </ul>
 
-        <ul class="window-ctl">
+        <ul id="window-ctl">
             <li id="min">_</li>
+            <li id="max">o</li>
+            <li id="restore">o</li>
+            <li id="close">x</li>
         </ul>
     </header>
 
-    <div class="cont">
-        <div id="cont-submarin">
-            <p>hoge</p>
-        </div>
+    <div class="cont show" id="cont-submarin">
+        <iframe src="https://submarin.online/"></iframe>
+    </div>
 
-        <div id="cont-tools">
-            <p>fuga</p>
-        </div>
+    <div class="cont" id="cont-tools">
+        <iframe src="henkan.html"></iframe>
+    </div>
 
-        <div id="cont-settings">
-            <p>piyo</p>
-        </div>
+    <div class="cont" id="cont-settings">
+        <p>piyo</p>
     </div>
 </body>
+
+<script src="index.js"></script>
 
 </html>
