@@ -2,7 +2,7 @@
     --text:  #000000;
     --text-hover: #f4f4f4;
     --text-active: #ffffff;
-    --titlebar: #e6e6e6;
+    --titlebar: #dfdfdf;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,6 +79,8 @@ iframe {
 
 #tabs {
     grid-template-columns: 130px 130px 130px;
+    margin-left: 10px;
+    margin-top: 4px;
 }
 
 #tabs li:hover {

@@ -11,6 +11,7 @@ app.on('ready', function () {
     win = new BrowserWindow({
         width: 1000,
         height: 800,
+        minWidth: 520,
         frame: false,
         'icon': path.join(__dirname, '../icon.ico'),
         webPreferences: {
