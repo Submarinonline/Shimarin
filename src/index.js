@@ -8,4 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById(`cont-${this.id}`).classList.add('show')
         })
     }
+
+    document.getElementById('close').addEventListener('click', function () { window.api.close() })
+    document.getElementById('restore').addEventListener('click', function () { window.api.restore() })
+    document.getElementById('max').addEventListener('click', function () { window.api.max() })
+    document.getElementById('min').addEventListener('click', function () { window.api.min() })
 })

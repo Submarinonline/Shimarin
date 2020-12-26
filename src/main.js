@@ -4,10 +4,11 @@ const localShortcut = require('electron-localshortcut');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const ipcMain = electron.ipcMain;
 
 let win = null;
 
-app.on('ready', function () {
+app.on('ready', () => {
     win = new BrowserWindow({
         width: 1000,
         height: 800,
@@ -16,23 +17,39 @@ app.on('ready', function () {
         'icon': path.join(__dirname, '../icon.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
+            worldSafeExecuteJavaScript: true,
+            contextIsolation: true,
+            nodeIntegration: false,
             }
     });
+
     win.setMenu(null);
-    win.setTitle('Submarin');
+    win.setTitle('Shimarin');
     win.loadURL(`${__dirname}/index.html`)
 
-    mainShortcuts();
-
-    win.on('closed', function () {
+    win.on('closed', () => {
         win = null
         app.quit();
     });
-});
 
-function mainShortcuts() {
+    ipcMain.on('close', () => {
+        win.close()
+    })
+    
+    ipcMain.on('restore', () => {
+        win.unmaximize()
+    })
+    
+    ipcMain.on('max', () => {
+        win.maximize()
+    })
+    
+    ipcMain.on('min', () => {
+        win.minimize()
+    })
+
     localShortcut.register(win, 'CommandOrControl+Q', function () {
-        app.quit();
+        win.close();
     });
 
     localShortcut.register(win, ['CommandOrControl+R', 'F5'], function () {
@@ -40,14 +57,10 @@ function mainShortcuts() {
     });
 
     localShortcut.register(win, 'F11', function () {
-        if (win.isFullScreen()) {
-            win.setSimpleFullScreen(false);
-        } else {
-            win.setSimpleFullScreen(true);
-        }
+        win.setSimpleFullScreen(!win.isFullScreen());
     });
 
     localShortcut.register(win, 'F12', function () {
         win.openDevTools();
     })
-};
+});
