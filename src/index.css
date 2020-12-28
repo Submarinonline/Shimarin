@@ -1,15 +1,21 @@
 :root {
     --text:  #000000;
-    --text-hover: #f4f4f4;
-    --text-active: #ffffff;
+    --tab-hover: #f4f4f4;
+    --tab-active: #ffffff;
+    --win-hover: #b9b9b9;
+    --close-hover: #d82929;
+    --close-hover-text: #ffffff;
     --titlebar: #dfdfdf;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --text:  #ffffff;
-        --text-hover: #373737;
-        --text-active: #121212;
+        --tab-hover: #373737;
+        --tab-active: #121212;
+        --win-hover: #373737;
+        --close-hover: #d82929;
+        --close-hover-text: #ffffff;
         --titlebar: #414141;
     }
 }
@@ -54,8 +60,20 @@ iframe {
 
 #window-ctl {
     -webkit-app-region: no-drag;
-    grid-template-columns: 40px 40px 40px;
+    grid-template-columns: 50px 50px 50px;
     margin-left: auto;
+}
+
+#window-ctl li:not(#close):hover {
+    background: var(--win-hover);
+}
+
+#close:hover {
+    background: var(--close-hover);
+}
+
+#close:hover svg {
+    fill: var(--close-hover-text);
 }
 
 #window-ctl li {
@@ -71,6 +89,11 @@ iframe {
 
 #max, #restore {
     grid-column: 2;
+    display: none !important;
+}
+
+#window-ctl .show-btn {
+    display: flex !important;
 }
 
 #close {
@@ -78,19 +101,28 @@ iframe {
 }
 
 #tabs {
-    grid-template-columns: 130px 130px 130px;
+    grid-template-columns: 125px 125px 125px;
     margin-left: 10px;
     margin-top: 4px;
 }
 
 #tabs li:hover {
-    background: var(--text-hover);
+    background: var(--tab-hover);
 }
 
 #bar {
     height: 4px;
     position: relative;
-    background: var(--text-active);
+    background: var(--tab-active);
+}
+
+.fullscreen header,
+.fullscreen #bar {
+    display: none !important;
+}
+
+.fullscreen iframe {
+    height: 100vh;
 }
 
 .tab {
@@ -110,8 +142,8 @@ iframe {
 }
 
 .tab.active div {
-    background: var(--text-active);
-    border: 2px solid var(--text-active);
+    background: var(--tab-active);
+    border: 2px solid var(--tab-active);
     border-bottom: none;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -124,7 +156,7 @@ iframe {
     position: absolute;
     bottom: 0px;
     content: "";
-    border: 2px solid var(--text-active);
+    border: 2px solid var(--tab-active);
     border-top: none;
 }
 
@@ -132,13 +164,13 @@ iframe {
     left: -12px;
     border-bottom-right-radius: 8px;
     border-left: none;
-    box-shadow: 2px 2px 0 var(--text-active);
+    box-shadow: 2px 2px 0 var(--tab-active);
 }
 .tab.active div::after {
     right: -12px;
     border-bottom-left-radius: 8px;
     border-right: none;
-    box-shadow: -2px 2px 0 var(--text-active);
+    box-shadow: -2px 2px 0 var(--tab-active);
 }
 
 .cont {

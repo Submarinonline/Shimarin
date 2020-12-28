@@ -14,3 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('max').addEventListener('click', function () { window.api.max() })
     document.getElementById('min').addEventListener('click', function () { window.api.min() })
 })
+
+window.api.onMaximize(() => {
+    document.getElementById('max').classList.remove('show-btn')
+    document.getElementById('restore').classList.add('show-btn')
+})
+
+window.api.onUnmaximize(() => {
+    document.getElementById('max').classList.add('show-btn')
+    document.getElementById('restore').classList.remove('show-btn')
+})

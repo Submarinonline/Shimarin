@@ -1,10 +1,6 @@
 const path = require('path');
-const electron = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const localShortcut = require('electron-localshortcut');
-
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const ipcMain = electron.ipcMain;
 
 let win = null;
 
@@ -12,7 +8,7 @@ app.on('ready', () => {
     win = new BrowserWindow({
         width: 1000,
         height: 800,
-        minWidth: 520,
+        minWidth: 535,
         frame: false,
         'icon': path.join(__dirname, '../icon.ico'),
         webPreferences: {
@@ -31,6 +27,14 @@ app.on('ready', () => {
         win = null
         app.quit();
     });
+
+    win.on('maximize', () => {
+        win.webContents.send('onMaximize')
+    })
+
+    win.on('unmaximize', () => {
+        win.webContents.send('unMaximize')
+    })
 
     ipcMain.on('close', () => {
         win.close()
@@ -61,6 +65,7 @@ app.on('ready', () => {
     });
 
     localShortcut.register(win, 'F12', function () {
-        win.openDevTools();
+        win.webContents.toggleDevTools()
+
     })
 });
