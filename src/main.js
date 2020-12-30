@@ -29,11 +29,19 @@ app.on('ready', () => {
     });
 
     win.on('maximize', () => {
-        win.webContents.send('onMaximize')
+        win.webContents.send('maximize')
     })
 
     win.on('unmaximize', () => {
-        win.webContents.send('unMaximize')
+        win.webContents.send('unmaximize')
+    })
+
+    win.on('enter-full-screen', () => {
+        win.webContents.send('enterFullScreen')
+    })
+
+    win.on('leave-full-screen', () => {
+        win.webContents.send('leaveFullScreen')
     })
 
     ipcMain.on('close', () => {

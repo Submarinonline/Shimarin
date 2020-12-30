@@ -7,7 +7,9 @@ contextBridge.exposeInMainWorld(
         restore: () => ipcRenderer.send('restore'),
         max: () => ipcRenderer.send('max'),
         min: () => ipcRenderer.send('min'),
-        onMaximize: (func) => ipcRenderer.on('onMaximize', () => func()),
-        onUnmaximize: (func) => ipcRenderer.on('unMaximize', () => func())
+        maximize: (func) => ipcRenderer.on('maximize', () => func()),
+        unmaximize: (func) => ipcRenderer.on('unmaximize', () => func()),
+        enterFullScreen: (func) => ipcRenderer.on('enterFullScreen', () => func()),
+        leaveFullScreen: (func) => ipcRenderer.on('leaveFullScreen', () => func()),
     }
 )

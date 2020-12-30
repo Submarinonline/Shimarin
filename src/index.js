@@ -15,12 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('min').addEventListener('click', function () { window.api.min() })
 })
 
-window.api.onMaximize(() => {
+window.api.maximize(() => {
     document.getElementById('max').classList.remove('show-btn')
     document.getElementById('restore').classList.add('show-btn')
 })
 
-window.api.onUnmaximize(() => {
+window.api.unmaximize(() => {
     document.getElementById('max').classList.add('show-btn')
     document.getElementById('restore').classList.remove('show-btn')
+})
+
+window.api.enterFullScreen(() => {
+    document.body.classList.add('fullscreen')
+})
+
+window.api.leaveFullScreen(() => {
+    document.body.classList.remove('fullscreen')
 })
