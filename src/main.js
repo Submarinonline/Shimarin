@@ -16,49 +16,49 @@ app.on('ready', () => {
             worldSafeExecuteJavaScript: true,
             contextIsolation: true,
             nodeIntegration: false,
-            }
+        }
     });
 
     win.setMenu(null);
     win.setTitle('Shimarin');
-    win.loadURL(`${__dirname}/index.html`)
+    win.loadURL(`${__dirname}/index.html`);
 
     win.on('closed', () => {
-        win = null
+        win = null;
         app.quit();
     });
 
     win.on('maximize', () => {
-        win.webContents.send('maximize')
-    })
+        win.webContents.send('maximize');
+    });
 
     win.on('unmaximize', () => {
-        win.webContents.send('unmaximize')
-    })
+        win.webContents.send('unmaximize');
+    });
 
     win.on('enter-full-screen', () => {
-        win.webContents.send('enterFullScreen')
-    })
+        win.webContents.send('enterFullScreen');
+    });
 
     win.on('leave-full-screen', () => {
-        win.webContents.send('leaveFullScreen')
-    })
+        win.webContents.send('leaveFullScreen');
+    });
 
     ipcMain.on('close', () => {
-        win.close()
-    })
+        win.close();
+    });
     
     ipcMain.on('restore', () => {
-        win.unmaximize()
-    })
+        win.unmaximize();
+    });
     
     ipcMain.on('max', () => {
-        win.maximize()
-    })
+        win.maximize();
+    });
     
     ipcMain.on('min', () => {
-        win.minimize()
-    })
+        win.minimize();
+    });
 
     localShortcut.register(win, 'CommandOrControl+Q', function () {
         win.close();
@@ -73,7 +73,7 @@ app.on('ready', () => {
     });
 
     localShortcut.register(win, 'F12', function () {
-        win.webContents.toggleDevTools()
+        win.webContents.toggleDevTools();
 
-    })
+    });
 });

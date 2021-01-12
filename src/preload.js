@@ -12,4 +12,4 @@ contextBridge.exposeInMainWorld(
         enterFullScreen: (func) => ipcRenderer.on('enterFullScreen', () => func()),
         leaveFullScreen: (func) => ipcRenderer.on('leaveFullScreen', () => func()),
     }
-)
+);
