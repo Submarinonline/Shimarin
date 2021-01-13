@@ -1,0 +1,20 @@
+:root {
+    --bg: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #121212;
+    }
+}
+
+body {
+    background-color: var(--bg);
+}
+
+textarea {
+    height: 30%;
+    border: 0px;
+    outline: none;
+    resize: none;
+}
