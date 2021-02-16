@@ -1,21 +1,21 @@
 :root {
-    --text:  #000000;
-    --tab-hover: #f4f4f4;
-    --tab-active: #ffffff;
-    --win-hover: #b9b9b9;
-    --close-hover: #d82929;
-    --close-hover-text: #ffffff;
+    --titlebar-text:  #000000;
+    --titlebar-tab-hover: #f4f4f4;
+    --titlebar-tab-active: #ffffff;
+    --win-ctl-hover: #b9b9b9;
+    --win-ctl-close-hover: #d82929;
+    --win-ctl-close-hover-text: #ffffff;
     --titlebar: #dfdfdf;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --text:  #ffffff;
-        --tab-hover: #373737;
-        --tab-active: #121212;
-        --win-hover: #373737;
-        --close-hover: #d82929;
-        --close-hover-text: #ffffff;
+        --titlebar-text:  #ffffff;
+        --titlebar-tab-hover: #373737;
+        --titlebar-tab-active: #121212;
+        --win-ctl-hover: #373737;
+        --win-ctl-close-hover: #d82929;
+        --win-ctl-close-hover-text: #ffffff;
         --titlebar: #414141;
     }
 }
@@ -29,24 +29,9 @@ body {
     background: var(--titlebar);
 }
 
-ul {
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    display: grid;
-}
-
-li {
-    color: var(--text);
-}
-
-svg {
-    fill: var(--text);
-}
-
 iframe {
     width: 100%;
-    height: calc(100vh - 40px);
+    height: 100%;
     border: 0;
 }
 
@@ -58,22 +43,38 @@ iframe {
     display: flex;
 }
 
+#titlebar-tabs,
+#window-ctl {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: grid;
+}
+
+#titlebar li {
+    color: var(--titlebar-text);
+}
+
+#titlebar svg {
+    fill: var(--titlebar-text);
+}
+
 #window-ctl {
     -webkit-app-region: no-drag;
     grid-template-columns: 50px 50px 50px;
     margin-left: auto;
 }
 
-#window-ctl li:not(#close):hover {
-    background: var(--win-hover);
+#window-ctl li:not(#window-ctl-close):hover {
+    background: var(--win-ctl-hover);
 }
 
-#close:hover {
-    background: var(--close-hover);
+#window-ctl-close:hover {
+    background: var(--win-ctl-close-hover);
 }
 
-#close:hover svg {
-    fill: var(--close-hover-text);
+#window-ctl-close:hover svg {
+    fill: var(--win-ctl-close-hover-text);
 }
 
 #window-ctl li {
@@ -83,37 +84,37 @@ iframe {
     justify-content: center;
 }
 
-#min {
+#window-ctl-min {
     grid-column: 1;
 }
 
-#max, #restore {
+#window-ctl-max, #window-ctl-restore {
     grid-column: 2;
     display: none !important;
 }
 
-#window-ctl .show-btn {
+#window-ctl .window-ctl-show {
     display: flex !important;
 }
 
-#close {
+#window-ctl-close {
     grid-column: 3;
 }
 
-#tabs {
+#titlebar-tabs {
     grid-template-columns: 125px 125px 125px;
     margin-left: 10px;
     margin-top: 4px;
 }
 
-#tabs li:hover {
-    background: var(--tab-hover);
+.titlebar-tab:hover {
+    background: var(--titlebar-tab-hover);
 }
 
 #bar {
     height: 4px;
     position: relative;
-    background: var(--tab-active);
+    background: var(--titlebar-tab-active);
 }
 
 .fullscreen header,
@@ -121,17 +122,17 @@ iframe {
     display: none !important;
 }
 
-.fullscreen iframe {
+.fullscreen .main-cont {
     height: 100vh;
 }
 
-.tab {
+.titlebar-tab {
     -webkit-app-region: no-drag;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
-.tab div {
+.titlebar-tab div {
     width: 100%;
     height: 100%;
     user-select: none;
@@ -141,42 +142,45 @@ iframe {
     position: relative;
 }
 
-.tab.active div {
-    background: var(--tab-active);
-    border: 2px solid var(--tab-active);
+.titlebar-tab-active div {
+    background: var(--titlebar-tab-active);
+    border: 2px solid var(--titlebar-tab-active);
     border-bottom: none;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
-.tab.active div::before,
-.tab.active div::after {
+.titlebar-tab-active div::before,
+.titlebar-tab-active div::after {
     width: 10px;
     height: 10px;
     position: absolute;
     bottom: 0px;
     content: "";
-    border: 2px solid var(--tab-active);
+    border: 2px solid var(--titlebar-tab-active);
     border-top: none;
 }
 
-.tab.active div::before {
+.titlebar-tab-active div::before {
     left: -12px;
     border-bottom-right-radius: 8px;
     border-left: none;
-    box-shadow: 2px 2px 0 var(--tab-active);
+    box-shadow: 2px 2px 0 var(--titlebar-tab-active);
 }
-.tab.active div::after {
+.titlebar-tab-active div::after {
     right: -12px;
     border-bottom-left-radius: 8px;
     border-right: none;
-    box-shadow: -2px 2px 0 var(--tab-active);
+    box-shadow: -2px 2px 0 var(--titlebar-tab-active);
 }
 
-.cont {
+.main-cont {
+    width: 100%;
+    height: calc(100vh - 40px);
+    border: 0;
     display: none;
 }
 
-.cont.show {
+.main-cont-show {
     display: block;
 }

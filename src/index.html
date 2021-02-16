@@ -7,32 +7,32 @@
 
 <body>
     <header id="titlebar">
-        <ul id="tabs">
-            <li class="tab active" id="submarin"><div>Submarin</div></li>
+        <ul id="titlebar-tabs">
+            <li class="titlebar-tab titlebar-tab-active" id="submarin"><div>Submarin</div></li>
 
-            <li class="tab" id="tools"><div>Tools</div></li>
+            <li class="titlebar-tab" id="tools"><div>Tools</div></li>
 
-            <li class="tab" id="settings"><div>Settings</div></li>
+            <li class="titlebar-tab" id="settings"><div>設定</div></li>
         </ul>
 
         <ul id="window-ctl">
-            <li id="min">
+            <li id="window-ctl-min">
                 <svg width="10" height="1" viewBox="0 0 10 1">
                     <path d="M 10 0 v 1 h -10 v -1 z"/>
                 </svg>
             </li>
-            <li class="show-btn" id="max">
+            <li class="window-ctl-show" id="window-ctl-max">
                 <svg width="10" height="10" viewBox="0 0 10 10">
                     <path d="M 10 -0 v 10 h -10 v -10 z m -1 1 h -8 v 8 h 8 z"/>
                 </svg>
             </li>
-            <li id="restore">
+            <li id="window-ctl-restore">
                 <svg width="11" height="11" viewBox="0 0 11 11">
                     <path
                         d="M 11 8.8 h -2.2 v 2.2 h -8.8 v -8.8 h 2.2 v -2.2 h 8.8 z m -3.3 -5.5 h -6.6 v 6.6 h 6.6 z m 2.2 -2.2 h -6.6 v 1.1 h 5.5 v 5.5 h 1.1 z"/>
                 </svg>
             </li>
-            <li id="close">
+            <li id="window-ctl-close">
                 <svg width="12" height="12" viewBox="0 0 12 12">
                     <path
                         d="M 6.85 6 l 5.15 5.15 l -0.85 0.85 l -5.15 -5.15 l -5.15 5.15 l -0.85 -0.85 l 5.15 -5.15 l -5.15 -5.15 l 0.85 -0.85 l 5.15 5.15 l 5.15 -5.15 l 0.85 0.85 z"/>
@@ -43,15 +43,15 @@
 
     <div id="bar"></div>
 
-    <div class="cont show" id="cont-submarin">
+    <div class="main-cont main-cont-show" id="cont-submarin">
         <iframe src="https://submarin.online/"></iframe>
     </div>
 
-    <div class="cont" id="cont-tools">
+    <div class="main-cont" id="cont-tools">
         <iframe src="tools/index.html"></iframe>
     </div>
 
-    <div class="cont" id="cont-settings">
+    <div class="main-cont" id="cont-settings">
         <p>piyo</p>
     </div>
 </body>

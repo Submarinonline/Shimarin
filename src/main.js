@@ -10,7 +10,7 @@ app.on('ready', () => {
         height: 800,
         minWidth: 535,
         frame: false,
-        'icon': path.join(__dirname, '../icon.ico'),
+        'icon': path.join(__dirname, '../icon/icon.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             worldSafeExecuteJavaScript: true,

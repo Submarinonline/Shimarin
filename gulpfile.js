@@ -8,7 +8,7 @@ gulp.task('package', function (done) {
         arch: 'x64',
         platform: 'win32',
         overwrite: true,
-        icon: 'icon.ico',
+        icon: 'icon/icon.ico',
         ignore: '(.gitignore|gulpfile.js|package-lock.json|.eslintrc.js)',
     });
     packager({
@@ -29,7 +29,7 @@ gulp.task('package-win', function (done) {
         arch: 'x64',
         platform: 'win32',
         overwrite: true,
-        icon: 'icon.ico',
+        icon: 'icon/icon.ico',
         ignore: '(.gitignore|gulpfile.js|package-lock.json|.eslintrc.js)',
     });
     done();
