@@ -15,26 +15,27 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('window-ctl-min').addEventListener('click', function () { window.api.min(); });
 
     document.getElementById('cjp-input').addEventListener('input', function () { window.api.genCjp(this.value); });
-});
+    document.getElementById('cjp-output').addEventListener('click', function () { this.select(); });
 
-window.api.maximize(() => {
-    document.getElementById('window-ctl-max').classList.remove('window-ctl-show');
-    document.getElementById('window-ctl-restore').classList.add('window-ctl-show');
-});
-
-window.api.unmaximize(() => {
-    document.getElementById('window-ctl-max').classList.add('window-ctl-show');
-    document.getElementById('window-ctl-restore').classList.remove('window-ctl-show');
-});
-
-window.api.enterFullScreen(() => {
-    document.body.classList.add('fullscreen');
-});
-
-window.api.leaveFullScreen(() => {
-    document.body.classList.remove('fullscreen');
-});
-
-window.api.outCjp((str) => {
-    document.getElementById('cjp-output').value = str;
+    window.api.maximize(() => {
+        document.getElementById('window-ctl-max').classList.remove('window-ctl-show');
+        document.getElementById('window-ctl-restore').classList.add('window-ctl-show');
+    });
+    
+    window.api.unmaximize(() => {
+        document.getElementById('window-ctl-max').classList.add('window-ctl-show');
+        document.getElementById('window-ctl-restore').classList.remove('window-ctl-show');
+    });
+    
+    window.api.enterFullScreen(() => {
+        document.body.classList.add('fullscreen');
+    });
+    
+    window.api.leaveFullScreen(() => {
+        document.body.classList.remove('fullscreen');
+    });
+    
+    window.api.outCjp((str) => {
+        document.getElementById('cjp-output').value = str;
+    });
 });
