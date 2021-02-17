@@ -1,6 +1,7 @@
 const path = require('path');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const localShortcut = require('electron-localshortcut');
+const { generate } = require('cjp');
 
 let win = null;
 
@@ -9,6 +10,7 @@ app.on('ready', () => {
         width: 1000,
         height: 800,
         minWidth: 535,
+        minHeight: 300,
         frame: false,
         'icon': path.join(__dirname, '../icon/icon.ico'),
         webPreferences: {
@@ -58,6 +60,10 @@ app.on('ready', () => {
     
     ipcMain.on('min', () => {
         win.minimize();
+    });
+
+    ipcMain.on('genCjp', (e, str) => {
+        win.webContents.send('outCjp', generate(str));
     });
 
     localShortcut.register(win, 'CommandOrControl+Q', function () {

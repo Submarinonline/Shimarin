@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('window-ctl-restore').addEventListener('click', function () { window.api.restore(); });
     document.getElementById('window-ctl-max').addEventListener('click', function () { window.api.max(); });
     document.getElementById('window-ctl-min').addEventListener('click', function () { window.api.min(); });
+
+    document.getElementById('cjp-input').addEventListener('input', function () { window.api.genCjp(this.value); });
 });
 
 window.api.maximize(() => {
@@ -31,4 +33,8 @@ window.api.enterFullScreen(() => {
 
 window.api.leaveFullScreen(() => {
     document.body.classList.remove('fullscreen');
+});
+
+window.api.outCjp((str) => {
+    document.getElementById('cjp-output').value = str;
 });

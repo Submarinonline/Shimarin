@@ -9,9 +9,7 @@
     <header id="titlebar">
         <ul id="titlebar-tabs">
             <li class="titlebar-tab titlebar-tab-active" id="submarin"><div>Submarin</div></li>
-
-            <li class="titlebar-tab" id="tools"><div>Tools</div></li>
-
+            <li class="titlebar-tab" id="cjp"><div>変换</div></li>
             <li class="titlebar-tab" id="settings"><div>設定</div></li>
         </ul>
 
@@ -44,15 +42,18 @@
     <div id="bar"></div>
 
     <div class="main-cont main-cont-show" id="cont-submarin">
-        <iframe src="https://submarin.online/"></iframe>
+        <iframe id="submarin-frame" src="https://submarin.online/"></iframe>
     </div>
 
-    <div class="main-cont" id="cont-tools">
-        <iframe src="tools/index.html"></iframe>
+    <div class="main-cont" id="cont-cjp">
+        <div id="cjp-frame">
+            <textarea id="cjp-input" spellcheck="false" placeholder="ここに入力"></textarea>
+            <textarea id="cjp-output" spellcheck="false" placeholder="ここに出力"></textarea>
+        </div>
     </div>
 
     <div class="main-cont" id="cont-settings">
-        <p>piyo</p>
+        <p style="margin: 0px;">piyo</p>
     </div>
 </body>
 
