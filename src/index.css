@@ -27,7 +27,7 @@
 }
 
 html, body {
-    height: 100%;
+    height: calc(100% - 4px);
     margin: 0;
 }
 
@@ -39,7 +39,9 @@ body {
     -webkit-app-region: drag;
     user-select: none;
     background: var(--titlebar);
-    height: 36px;
+    height: 32px;
+    margin-top: 4px;
+    margin-left: 4px;
     display: flex;
 }
 
@@ -63,6 +65,9 @@ body {
     -webkit-app-region: no-drag;
     grid-template-columns: 50px 50px 50px;
     margin-left: auto;
+    position: relative;
+    top: -4px;
+    height: 36px;
 }
 
 #window-ctl li:not(#window-ctl-close):hover {
@@ -103,8 +108,7 @@ body {
 
 #titlebar-tabs {
     grid-template-columns: 120px 120px 120px;
-    margin-left: 10px;
-    margin-top: 3px;
+    margin-left: 6px;
 }
 
 .titlebar-tab:hover {
@@ -176,7 +180,7 @@ body {
 
 .main-cont {
     width: 100%;
-    height: calc(100vh - 40px);
+    height: calc(100% - 32px);
     border: 0;
     display: none;
 }

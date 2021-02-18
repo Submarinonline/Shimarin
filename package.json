@@ -1,5 +1,6 @@
 {
   "name": "shimarin",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "./src/main.js",
@@ -8,7 +9,8 @@
   "license": "MIT",
   "dependencies": {
     "cjp": "^0.6.7",
-    "electron-localshortcut": "^3.2.1"
+    "electron-localshortcut": "^3.2.1",
+    "electron-store": "^7.0.2"
   },
   "devDependencies": {
     "electron": "^10.1.5",

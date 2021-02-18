@@ -1,18 +1,22 @@
 const path = require('path');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const localShortcut = require('electron-localshortcut');
+const Store = require('electron-store');
 const { generate } = require('cjp');
 
 let win = null;
+let store = new Store();
 
 app.on('ready', () => {
     win = new BrowserWindow({
-        width: 1000,
-        height: 800,
+        width: store.get('window.width', 1000),
+        height: store.get('window.height', 800),
+        x: store.get('window.x'),
+        y: store.get('window.y'),
         minWidth: 535,
         minHeight: 300,
         frame: false,
-        'icon': path.join(__dirname, '../icon/icon.ico'),
+        icon: path.join(__dirname, '../icon/icon.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             worldSafeExecuteJavaScript: true,
@@ -24,6 +28,13 @@ app.on('ready', () => {
     win.setMenu(null);
     win.setTitle('Shimarin');
     win.loadURL(`${__dirname}/index.html`);
+
+    win.on('close', () => {
+        store.set('window.width', win.getSize()[0]);
+        store.set('window.height', win.getSize()[1]);
+        store.set('window.x', win.getPosition()[0]);
+        store.set('window.y', win.getPosition()[1]);
+    });
 
     win.on('closed', () => {
         win = null;
