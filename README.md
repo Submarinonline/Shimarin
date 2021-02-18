@@ -1,4 +1,4 @@
-# Shimarin(仮)
+# Shimarin
 [Submarin](https://submarin.online) を表示
 ## 操作方法
 - Control+Q...Quit
