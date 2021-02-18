@@ -16,7 +16,8 @@ app.on('ready', () => {
         minWidth: 535,
         minHeight: 300,
         frame: false,
-        icon: path.join(__dirname, '../icon/icon.ico'),
+        title: 'Shimarin',
+        icon: path.join(__dirname, '../icon/icon.png'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             worldSafeExecuteJavaScript: true,
@@ -26,7 +27,6 @@ app.on('ready', () => {
     });
 
     win.setMenu(null);
-    win.setTitle('Shimarin');
     win.loadURL(`${__dirname}/index.html`);
 
     win.on('close', () => {
