@@ -4,7 +4,6 @@
   "version": "1.4.b1",
   "description": "",
   "main": "./src/main.js",
-  "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
