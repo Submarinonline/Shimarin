@@ -26,3 +26,13 @@ gulp.task('package', function (done) {
     packager(linux);
     done();
 });
+
+gulp.task('package-win', function (done) {
+    packager(windows);
+    done();
+});
+
+gulp.task('package-linux', function (done) {
+    packager(linux);
+    done();
+});

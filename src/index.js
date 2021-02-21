@@ -38,4 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.api.outCjp((str) => {
         document.getElementById('cjp-output').value = str;
     });
+
+    window.api.contentLoaded();
 });

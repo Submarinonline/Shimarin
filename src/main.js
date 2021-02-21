@@ -16,6 +16,7 @@ app.on('ready', () => {
         minWidth: 535,
         minHeight: 300,
         frame: false,
+        show: false,
         title: 'Shimarin',
         icon: path.join(__dirname, '../icon/icon.png'),
         webPreferences: {
@@ -26,7 +27,6 @@ app.on('ready', () => {
         }
     });
 
-    win.setMenu(null);
     win.loadURL(`${__dirname}/index.html`);
 
     win.on('close', () => {
@@ -34,6 +34,7 @@ app.on('ready', () => {
         store.set('window.height', win.getSize()[1]);
         store.set('window.x', win.getPosition()[0]);
         store.set('window.y', win.getPosition()[1]);
+        store.set('window.isMaximized', win.isMaximized());
     });
 
     win.on('closed', () => {
@@ -75,6 +76,12 @@ app.on('ready', () => {
 
     ipcMain.on('genCjp', (e, str) => {
         win.webContents.send('outCjp', generate(str));
+    });
+
+    ipcMain.on('contentLoaded', () => {
+        win.setMenu(null);
+        if (store.get('window.isMaximized')) { win.maximize(); }
+        win.show();
     });
 
     localShortcut.register(win, 'CommandOrControl+Q', function () {
