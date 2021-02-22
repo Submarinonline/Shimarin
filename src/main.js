@@ -27,8 +27,6 @@ app.on('ready', () => {
         }
     });
 
-    win.loadURL(`${__dirname}/index.html`);
-
     win.on('close', () => {
         store.set('window.width', win.getSize()[0]);
         store.set('window.height', win.getSize()[1]);
@@ -100,4 +98,6 @@ app.on('ready', () => {
         win.webContents.toggleDevTools();
 
     });
+
+    win.loadURL(`file://${__dirname}/index.html`);
 });
