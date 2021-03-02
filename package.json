@@ -1,10 +1,10 @@
 {
   "name": "shimarin",
   "private": true,
-  "version": "1.4.b1",
+  "version": "1.4",
   "description": "",
-  "main": "./src/main.js",
-  "author": "",
+  "main": "src/main.js",
+  "author": "sh",
   "license": "MIT",
   "dependencies": {
     "cjp": "^0.6.7",
