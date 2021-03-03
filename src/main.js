@@ -4,8 +4,15 @@ const localShortcut = require('electron-localshortcut');
 const Store = require('electron-store');
 const { generate } = require('cjp');
 
+const config = require('./config.json');
+
 let win = null;
 let store = new Store();
+
+function getKey(key) {
+    if (!store.has(`key.${key}`)) store.set(`key.${key}`, config.key[key]);
+    return store.get(`key.${key}`);
+}
 
 app.on('ready', () => {
     win = new BrowserWindow({
@@ -59,22 +66,14 @@ app.on('ready', () => {
     ipcMain.on('close', () => {
         win.close();
     });
-    
-    ipcMain.on('restore', () => {
-        win.unmaximize();
-    });
-    
-    ipcMain.on('max', () => {
-        win.maximize();
-    });
-    
-    ipcMain.on('min', () => {
-        win.minimize();
-    });
 
-    ipcMain.on('genCjp', (e, str) => {
-        win.webContents.send('outCjp', generate(str));
-    });
+    ipcMain.on('restore', () => win.unmaximize());
+
+    ipcMain.on('max', () => win.maximize());
+
+    ipcMain.on('min', () => win.minimize());
+
+    ipcMain.on('genCjp', (e, str) => win.webContents.send('outCjp', generate(str)));
 
     ipcMain.on('contentLoaded', () => {
         win.setMenu(null);
@@ -82,22 +81,13 @@ app.on('ready', () => {
         win.show();
     });
 
-    localShortcut.register(win, 'CommandOrControl+Q', function () {
-        win.close();
-    });
+    localShortcut.register(win, getKey('quit'), function () { win.close(); });
 
-    localShortcut.register(win, ['CommandOrControl+R', 'F5'], function () {
-        win.reload();
-    });
+    localShortcut.register(win, getKey('reload'), function () { win.reload(); });
 
-    localShortcut.register(win, 'F11', function () {
-        win.setSimpleFullScreen(!win.isFullScreen());
-    });
+    localShortcut.register(win, getKey('fullscreen'), function () { win.setSimpleFullScreen(!win.isFullScreen()); });
 
-    localShortcut.register(win, 'F12', function () {
-        win.webContents.toggleDevTools();
-
-    });
+    localShortcut.register(win, getKey('devtools'), function () { win.webContents.toggleDevTools(); });
 
     win.loadURL(`file://${__dirname}/index.html`);
 });

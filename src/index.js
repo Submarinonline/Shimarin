@@ -21,20 +21,20 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('window-ctl-max').classList.remove('window-ctl-show');
         document.getElementById('window-ctl-restore').classList.add('window-ctl-show');
     });
-    
+
     window.api.unmaximize(() => {
         document.getElementById('window-ctl-max').classList.add('window-ctl-show');
         document.getElementById('window-ctl-restore').classList.remove('window-ctl-show');
     });
-    
+
     window.api.enterFullScreen(() => {
         document.body.classList.add('fullscreen');
     });
-    
+
     window.api.leaveFullScreen(() => {
         document.body.classList.remove('fullscreen');
     });
-    
+
     window.api.outCjp((str) => {
         document.getElementById('cjp-output').value = str;
     });

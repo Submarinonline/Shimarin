@@ -1,0 +1,11 @@
+{
+    "key": {
+        "quit": "CommandOrControl+Q",
+        "reload": [
+            "CommandOrControl+R",
+            "F5"
+        ],
+        "fullscreen": "F11",
+        "devtools": "F12"
+    }
+}
