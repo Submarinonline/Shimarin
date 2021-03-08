@@ -2,7 +2,8 @@ const path = require('path');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const localShortcut = require('electron-localshortcut');
 const Store = require('electron-store');
-const { generate } = require('cjp');
+const cjp = require('cjp');
+const menhera = require('genhera');
 
 const config = require('./config.json');
 
@@ -73,7 +74,9 @@ app.on('ready', () => {
 
     ipcMain.on('min', () => win.minimize());
 
-    ipcMain.on('genCjp', (e, str) => win.webContents.send('outCjp', generate(str)));
+    ipcMain.handle('genCjp', (e, str) => { return cjp.generate(str); });
+
+    ipcMain.handle('genMhr', (e, str) => { return menhera.generate(str); });
 
     ipcMain.on('contentLoaded', () => {
         win.setMenu(null);

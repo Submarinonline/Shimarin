@@ -9,7 +9,8 @@
   "dependencies": {
     "cjp": "^1.0.2",
     "electron-localshortcut": "^3.2.1",
-    "electron-store": "^7.0.2"
+    "electron-store": "^7.0.2",
+    "genhera": "^1.1.0"
   },
   "devDependencies": {
     "electron": "^12.0.0",

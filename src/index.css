@@ -7,9 +7,9 @@
     --win-ctl-close-hover: #41ADEF;
     --win-ctl-close-hover-text: #fff;
     --bg: #dfdfdf;
-    --cjp-input-border: #41ADEF;
-    --cjp-bg: #fff;
-    --cjp-text: #000;
+    --conv-input-border: #41ADEF;
+    --conv-bg: #fff;
+    --conv-text: #000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,9 +22,9 @@
         --win-ctl-close-hover: #41ADEF;
         --win-ctl-close-hover-text: #ffffff;
         --bg: #414141;
-        --cjp-input-border: #41ADEF;
-        --cjp-bg: #121212;
-        --cjp-text: #fff;
+        --conv-input-border: #41ADEF;
+        --conv-bg: #121212;
+        --conv-text: #fff;
     }
 }
 
@@ -197,27 +197,40 @@ body {
     border: 0;
 }
 
-#cjp-frame {
-    background: var(--cjp-bg);
-    display: flex;
-    height: 100%;
+#conv-frame {
+    background: var(--conv-bg);
 }
 
-#cjp-input,
-#cjp-output {
+#conv-textarea {
+    display: flex;
+    height: calc(100% - 30px);
+}
+
+#conv-select {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid var(--conv-input-border);
+    background: var(--conv-bg);
+    margin-left: calc(100% - 205px);
+}
+
+#conv-input,
+#conv-output {
     font-size: 25px;
     margin: 5px;
     width: calc(50% - 10px);
     height: calc(100% - 10px);
-    border: 2px solid var(--cjp-input-border);
+    border: 2px solid var(--conv-input-border);
     border-radius: 10px;
-    background: var(--cjp-bg);
-    color: var(--cjp-text);
+    background: var(--conv-bg);
+    color: var(--conv-text);
     overflow: hidden;
     resize: none;
 }
 
-#cjp-input:focus,
-#cjp-output:focus {
+#conv-input:focus,
+#conv-output:focus,
+#conv-select:focus {
     outline: none;
 }

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    for (var tab of document.getElementsByClassName('titlebar-tab')) {
+    for (const tab of document.getElementsByClassName('titlebar-tab')) {
         tab.addEventListener('click', function () {
             if (this.classList.contains('titlebar-tab-active')) return;
             document.getElementsByClassName('titlebar-tab-active')[0].classList.remove('titlebar-tab-active');
@@ -14,8 +14,23 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('window-ctl-max').addEventListener('click', function () { window.api.max(); });
     document.getElementById('window-ctl-min').addEventListener('click', function () { window.api.min(); });
 
-    document.getElementById('cjp-input').addEventListener('input', function () { window.api.genCjp(this.value); });
-    document.getElementById('cjp-output').addEventListener('click', function () { this.select(); });
+    document.getElementById('conv-select').addEventListener('change', function () {
+        document.getElementById('conv-frame').className = `selected-${this.value}`;
+    });
+
+    document.getElementById('conv-input').addEventListener('input', function () {
+        const ele = document.getElementById('conv-frame');
+        if (ele.classList.contains('selected-cjp')) {
+            window.api.genCjp(this.value).then(result => {
+                document.getElementById('conv-output').value = result;
+            });
+        } else if (ele.classList.contains('selected-mhr')) {
+            window.api.genMhr(this.value).then(result => {
+                document.getElementById('conv-output').value = result;
+            });
+        }
+    });
+    document.getElementById('conv-output').addEventListener('click', function () { this.select(); });
 
     window.api.maximize(() => {
         document.getElementById('window-ctl-max').classList.remove('window-ctl-show');
@@ -33,10 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.api.leaveFullScreen(() => {
         document.body.classList.remove('fullscreen');
-    });
-
-    window.api.outCjp((str) => {
-        document.getElementById('cjp-output').value = str;
     });
 
     window.api.contentLoaded();
