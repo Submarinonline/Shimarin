@@ -48,25 +48,15 @@ app.on('ready', () => {
         app.quit();
     });
 
-    win.on('maximize', () => {
-        win.webContents.send('maximize');
-    });
+    win.on('maximize', () => win.webContents.send('maximize'));
 
-    win.on('unmaximize', () => {
-        win.webContents.send('unmaximize');
-    });
+    win.on('unmaximize', () => win.webContents.send('unmaximize'));
 
-    win.on('enter-full-screen', () => {
-        win.webContents.send('enterFullScreen');
-    });
+    win.on('enter-full-screen', () => win.webContents.send('enterFullScreen'));
 
-    win.on('leave-full-screen', () => {
-        win.webContents.send('leaveFullScreen');
-    });
+    win.on('leave-full-screen', () => win.webContents.send('leaveFullScreen'));
 
-    ipcMain.on('close', () => {
-        win.close();
-    });
+    ipcMain.on('close', () => win.close());
 
     ipcMain.on('restore', () => win.unmaximize());
 
