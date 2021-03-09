@@ -37,6 +37,12 @@ body {
     background: var(--bg);
 }
 
+textarea:focus,
+button:focus,
+select:focus {
+    outline: none;
+}
+
 #titlebar {
     -webkit-app-region: drag;
     user-select: none;
@@ -206,13 +212,30 @@ body {
     height: calc(100% - 30px);
 }
 
+#conv-btn {
+    display: flex;
+}
+
+#conv-copy,
+#conv-clear {
+    padding: 0px;
+    height: 30px;
+    width: calc(25% - 10px);
+    border-radius: 10px;
+    border: 2px solid var(--conv-input-border);
+    background: var(--conv-bg);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 #conv-select {
-    width: 200px;
+    width: calc(50% - 10px);
     height: 30px;
     border-radius: 10px;
     border: 2px solid var(--conv-input-border);
     background: var(--conv-bg);
-    margin-left: calc(100% - 205px);
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #conv-input,
@@ -227,10 +250,4 @@ body {
     color: var(--conv-text);
     overflow: hidden;
     resize: none;
-}
-
-#conv-input:focus,
-#conv-output:focus,
-#conv-select:focus {
-    outline: none;
 }
