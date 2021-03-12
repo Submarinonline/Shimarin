@@ -14,10 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     getElement('window-ctl-max').addEventListener('click', function () { window.api.max(); });
     getElement('window-ctl-min').addEventListener('click', function () { window.api.min(); });
 
-    getElement('conv-select').addEventListener('change', function () {
-        getElement('conv-frame').className = `selected-${this.value}`;
-        gen();
-    });
+    getElement('conv-select').addEventListener('change', function () { gen(); });
 
     getElement('conv-copy').addEventListener('click', function () {
         getElement('conv-output').select();
@@ -52,15 +49,14 @@ document.addEventListener('DOMContentLoaded', function () {
 function getElement(id) { return document.getElementById(id); }
 
 function gen() {
-    const cf = getElement('conv-frame');
-    const ci = getElement('conv-input');
-    if (cf.classList.contains('selected-cjp')) {
-        window.api.genCjp(ci.value).then(result => {
-            getElement('conv-output').value = result;
-        });
-    } else if (cf.classList.contains('selected-mhr')) {
-        window.api.genMhr(ci.value).then(result => {
-            getElement('conv-output').value = result;
-        });
+    switch (getElement('conv-select').value) {
+        case 'cjp': {
+            window.api.genCjp(getElement('conv-input').value).then(result => { getElement('conv-output').value = result; });
+            break;
+        }
+        case 'mhr': {
+            window.api.genMhr(getElement('conv-input').value).then(result => { getElement('conv-output').value = result; });
+            break;
+        }
     }
 }
