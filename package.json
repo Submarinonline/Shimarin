@@ -1,11 +1,8 @@
 {
   "name": "shimarin",
-  "private": true,
-  "version": "1.4",
   "description": "",
-  "main": "src/main.js",
+  "version": "1.4",
   "author": "sh",
-  "license": "MIT",
   "dependencies": {
     "cjp": "^1.0.2",
     "electron-localshortcut": "^3.2.1",
@@ -17,5 +14,13 @@
     "electron-packager": "^15.2.0",
     "eslint": "^7.21.0",
     "gulp": "^4.0.2"
+  },
+  "license": "MIT",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "build": "gulp package",
+    "build:linux": "gulp package-linux",
+    "build:win": "gulp package-win"
   }
 }
