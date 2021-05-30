@@ -7,7 +7,6 @@ const menhera = require('genhera');
 
 const config = require('./config.json');
 
-let win = null;
 let store = new Store();
 
 function getKey(key) {
@@ -16,7 +15,7 @@ function getKey(key) {
 }
 
 app.on('ready', () => {
-    win = new BrowserWindow({
+    const win = new BrowserWindow({
         width: store.get('window.width', 1000),
         height: store.get('window.height', 800),
         x: store.get('window.x'),
@@ -41,11 +40,6 @@ app.on('ready', () => {
         store.set('window.x', win.getPosition()[0]);
         store.set('window.y', win.getPosition()[1]);
         store.set('window.isMaximized', win.isMaximized());
-    });
-
-    win.on('closed', () => {
-        win = null;
-        app.quit();
     });
 
     win.on('maximize', () => win.webContents.send('maximize'));

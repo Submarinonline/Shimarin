@@ -203,7 +203,7 @@ select:focus {
     border: 0;
 }
 
-#conv-frame {
+#cont-conv{
     background: var(--conv-bg);
 }
 
