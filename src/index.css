@@ -43,6 +43,7 @@ select:focus {
     outline: none;
 }
 
+/* TitleBar */
 #titlebar {
     -webkit-app-region: drag;
     user-select: none;
@@ -69,6 +70,22 @@ select:focus {
     fill: var(--titlebar-text);
 }
 
+#bar {
+    height: 4px;
+    position: relative;
+    background: var(--titlebar-tab-active);
+}
+
+.fullscreen header,
+.fullscreen #bar {
+    display: none !important;
+}
+
+.fullscreen .main-cont {
+    height: 100vh;
+}
+
+/* Window Control */
 #window-ctl {
     -webkit-app-region: no-drag;
     grid-template-columns: 50px 50px 50px;
@@ -114,6 +131,7 @@ select:focus {
     grid-column: 3;
 }
 
+/* TitleBar Tab */
 #titlebar-tabs {
     grid-template-columns: 120px 120px 120px;
     margin-left: 6px;
@@ -121,21 +139,6 @@ select:focus {
 
 .titlebar-tab:hover {
     background: var(--titlebar-tab-hover);
-}
-
-#bar {
-    height: 4px;
-    position: relative;
-    background: var(--titlebar-tab-active);
-}
-
-.fullscreen header,
-.fullscreen #bar {
-    display: none !important;
-}
-
-.fullscreen .main-cont {
-    height: 100vh;
 }
 
 .titlebar-tab {
@@ -186,6 +189,7 @@ select:focus {
     box-shadow: -2px 2px 0 var(--titlebar-tab-active);
 }
 
+/* main content */
 .main-cont {
     width: 100%;
     height: calc(100% - 32px);
@@ -197,12 +201,15 @@ select:focus {
     display: block;
 }
 
+/* Submarin */
 #submarin-frame {
     width: 100%;
     height: 100%;
     border: 0;
 }
 
+
+/* Convert */
 #cont-conv{
     background: var(--conv-bg);
 }
