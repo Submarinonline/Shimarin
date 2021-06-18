@@ -1,30 +1,24 @@
 :root {
     --titlebar: #dfdfdf;
     --titlebar-text:  #000000;
-    --titlebar-tab-hover: #f4f4f4;
-    --titlebar-tab-active: #fff;
+    --tab-hover: #f4f4f4;
+    --tab-active: #fff;
     --win-ctl-hover: #b9b9b9;
     --win-ctl-close-hover: #41ADEF;
     --win-ctl-close-hover-text: #fff;
     --bg: #dfdfdf;
-    --conv-input-border: #41ADEF;
-    --conv-bg: #fff;
-    --conv-text: #000;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --titlebar: #414141;
         --titlebar-text:  #ffffff;
-        --titlebar-tab-hover: #373737;
-        --titlebar-tab-active: #121212;
+        --tab-hover: #373737;
+        --tab-active: #121212;
         --win-ctl-hover: #373737;
         --win-ctl-close-hover: #41ADEF;
         --win-ctl-close-hover-text: #ffffff;
         --bg: #414141;
-        --conv-input-border: #41ADEF;
-        --conv-bg: #121212;
-        --conv-text: #fff;
     }
 }
 
@@ -37,10 +31,10 @@ body {
     background: var(--bg);
 }
 
-textarea:focus,
-button:focus,
-select:focus {
-    outline: none;
+iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 /* TitleBar */
@@ -54,7 +48,7 @@ select:focus {
     display: flex;
 }
 
-#titlebar-tabs,
+#tabs,
 #window-ctl {
     margin: 0px;
     padding: 0px;
@@ -73,7 +67,7 @@ select:focus {
 #bar {
     height: 4px;
     position: relative;
-    background: var(--titlebar-tab-active);
+    background: var(--tab-active);
 }
 
 .fullscreen header,
@@ -132,22 +126,22 @@ select:focus {
 }
 
 /* TitleBar Tab */
-#titlebar-tabs {
+#tabs {
     grid-template-columns: 120px 120px 120px;
     margin-left: 6px;
 }
 
-.titlebar-tab:hover {
-    background: var(--titlebar-tab-hover);
+.tab:hover {
+    background: var(--tab-hover);
 }
 
-.titlebar-tab {
+.tab {
     -webkit-app-region: no-drag;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
-.titlebar-tab div {
+.tab div {
     width: 100%;
     height: 100%;
     user-select: none;
@@ -157,36 +151,36 @@ select:focus {
     position: relative;
 }
 
-.titlebar-tab-active div {
-    background: var(--titlebar-tab-active);
-    border: 2px solid var(--titlebar-tab-active);
+.tab-active div {
+    background: var(--tab-active);
+    border: 2px solid var(--tab-active);
     border-bottom: none;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
-.titlebar-tab-active div::before,
-.titlebar-tab-active div::after {
+.tab-active div::before,
+.tab-active div::after {
     width: 10px;
     height: 10px;
     position: absolute;
     bottom: 0px;
     content: "";
-    border: 2px solid var(--titlebar-tab-active);
+    border: 2px solid var(--tab-active);
     border-top: none;
 }
 
-.titlebar-tab-active div::before {
+.tab-active div::before {
     left: -12px;
     border-bottom-right-radius: 8px;
     border-left: none;
-    box-shadow: 2px 2px 0 var(--titlebar-tab-active);
+    box-shadow: 2px 2px 0 var(--tab-active);
 }
-.titlebar-tab-active div::after {
+.tab-active div::after {
     right: -12px;
     border-bottom-left-radius: 8px;
     border-right: none;
-    box-shadow: -2px 2px 0 var(--titlebar-tab-active);
+    box-shadow: -2px 2px 0 var(--tab-active);
 }
 
 /* main content */
@@ -199,62 +193,4 @@ select:focus {
 
 .main-cont-show {
     display: block;
-}
-
-/* Submarin */
-#submarin-frame {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-
-/* Convert */
-#cont-conv{
-    background: var(--conv-bg);
-}
-
-#conv-textarea {
-    display: flex;
-    height: calc(100% - 30px);
-}
-
-#conv-btn {
-    display: flex;
-}
-
-#conv-copy,
-#conv-clear {
-    padding: 0px;
-    height: 30px;
-    width: calc(25% - 10px);
-    border-radius: 10px;
-    border: 2px solid var(--conv-input-border);
-    background: var(--conv-bg);
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#conv-select {
-    width: calc(50% - 10px);
-    height: 30px;
-    border-radius: 10px;
-    border: 2px solid var(--conv-input-border);
-    background: var(--conv-bg);
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#conv-input,
-#conv-output {
-    font-size: 25px;
-    margin: 5px;
-    width: calc(50% - 10px);
-    height: calc(100% - 10px);
-    border: 2px solid var(--conv-input-border);
-    border-radius: 10px;
-    background: var(--conv-bg);
-    color: var(--conv-text);
-    overflow: hidden;
-    resize: none;
 }

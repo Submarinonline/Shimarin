@@ -1,0 +1,68 @@
+:root {
+    --conv-input-border: #41ADEF;
+    --conv-bg: #fff;
+    --conv-text: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --conv-input-border: #41ADEF;
+        --conv-bg: #121212;
+        --conv-text: #fff;
+    }
+}
+
+body {
+    background: var(--conv-bg);
+}
+
+textarea:focus,
+button:focus,
+select:focus {
+    outline: none;
+}
+
+#textarea {
+    display: flex;
+    height: calc(100% - 30px);
+}
+
+#header{
+    display: flex;
+}
+
+#copy,
+#clear {
+    padding: 0px;
+    height: 30px;
+    width: calc(25% - 10px);
+    border-radius: 10px;
+    border: 2px solid var(--conv-input-border);
+    background: var(--conv-bg);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#select {
+    width: calc(50% - 10px);
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid var(--conv-input-border);
+    background: var(--conv-bg);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#input,
+#output {
+    font-size: 25px;
+    margin: 5px;
+    width: calc(50% - 10px);
+    height: calc(100% - 10px);
+    border: 2px solid var(--conv-input-border);
+    border-radius: 10px;
+    background: var(--conv-bg);
+    color: var(--conv-text);
+    overflow: hidden;
+    resize: none;
+}

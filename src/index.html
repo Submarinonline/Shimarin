@@ -7,15 +7,15 @@
 
 <body>
     <header id="titlebar">
-        <ul id="titlebar-tabs">
-            <li class="titlebar-tab titlebar-tab-active" id="submarin">
+        <ul id="tabs">
+            <li class="tab tab-active" id="submarin">
                 <div>Submarin</div>
             </li>
-            <li class="titlebar-tab" id="conv">
+            <li class="tab" id="conv">
                 <div>変換</div>
             </li>
-            <li class="titlebar-tab" id="settings">
-                <div>settei</div>
+            <li class="tab" id="settings">
+                <div>設定</div>
             </li>
         </ul>
 
@@ -52,18 +52,7 @@
     </div>
 
     <div class="main-cont" id="cont-conv">
-        <div id="conv-btn">
-            <select id="conv-select">
-                <option value='cjp'>怪しい日本語</option>
-                <option value='mhr'>メンヘラ</option>
-            </select>
-            <button id="conv-copy">コピー</button>
-            <button id="conv-clear">クリア</button>
-        </div>
-        <div id="conv-textarea">
-            <textarea id="conv-input" spellcheck="false" placeholder="ここに入力"></textarea>
-            <textarea id="conv-output" spellcheck="false" placeholder="ここに出力"></textarea>
-        </div>
+        <iframe id="conv-frame" src="conv/conv.html"></iframe>
     </div>
 
     <div class="main-cont" id="cont-settings">
