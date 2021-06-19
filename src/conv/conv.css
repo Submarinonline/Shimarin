@@ -1,19 +1,19 @@
 :root {
-    --conv-input-border: #41ADEF;
-    --conv-bg: #fff;
-    --conv-text: #000;
+    --border: #41ADEF;
+    --bg: #fff;
+    --text: #000;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --conv-input-border: #41ADEF;
-        --conv-bg: #121212;
-        --conv-text: #fff;
+        --border: #41ADEF;
+        --bg: #121212;
+        --text: #fff;
     }
 }
 
 body {
-    background: var(--conv-bg);
+    background: var(--bg);
 }
 
 textarea:focus,
@@ -37,8 +37,8 @@ select:focus {
     height: 30px;
     width: calc(25% - 10px);
     border-radius: 10px;
-    border: 2px solid var(--conv-input-border);
-    background: var(--conv-bg);
+    border: 2px solid var(--border);
+    background: var(--bg);
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -47,8 +47,8 @@ select:focus {
     width: calc(50% - 10px);
     height: 30px;
     border-radius: 10px;
-    border: 2px solid var(--conv-input-border);
-    background: var(--conv-bg);
+    border: 2px solid var(--border);
+    background: var(--bg);
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -59,10 +59,10 @@ select:focus {
     margin: 5px;
     width: calc(50% - 10px);
     height: calc(100% - 10px);
-    border: 2px solid var(--conv-input-border);
+    border: 2px solid var(--border);
     border-radius: 10px;
-    background: var(--conv-bg);
-    color: var(--conv-text);
+    background: var(--bg);
+    color: var(--text);
     overflow: hidden;
     resize: none;
 }
