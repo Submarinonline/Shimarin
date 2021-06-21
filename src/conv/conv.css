@@ -57,6 +57,7 @@ select:focus {
 #output {
     font-size: 25px;
     margin: 5px;
+    padding: 5px;
     width: calc(50% - 10px);
     height: calc(100% - 10px);
     border: 2px solid var(--border);

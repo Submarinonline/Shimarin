@@ -13,6 +13,9 @@ contextBridge.exposeInMainWorld(
         maximize: (func) => ipcRenderer.on('maximize', () => func()),
         unmaximize: (func) => ipcRenderer.on('unmaximize', () => func()),
         enterFullScreen: (func) => ipcRenderer.on('enterFullScreen', () => func()),
-        leaveFullScreen: (func) => ipcRenderer.on('leaveFullScreen', () => func())
+        leaveFullScreen: (func) => ipcRenderer.on('leaveFullScreen', () => func()),
+        activateSubmarin: (func) => ipcRenderer.on('activateSubmarin', () => func()),
+        activateConvert: (func) => ipcRenderer.on('activateConvert', () => func()),
+        activateSettings: (func) => ipcRenderer.on('activateSettings', () => func()),
     }
 );

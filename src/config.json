@@ -1,11 +1,26 @@
 {
     "key": {
-        "quit": "CommandOrControl+Q",
+        "quit": [
+            "CommandOrControl+Q"
+        ],
         "reload": [
             "CommandOrControl+R",
             "F5"
         ],
-        "fullscreen": "F11",
-        "devtools": "F12"
+        "fullscreen": [
+            "F11"
+        ],
+        "devtools": [
+            "F12"
+        ],
+        "submarin": [
+            "CommandOrControl+1"
+        ],
+        "convert": [
+            "CommandOrControl+2"
+        ],
+        "settings": [
+            "CommandOrControl+3"
+        ]
     }
 }

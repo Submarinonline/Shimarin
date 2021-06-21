@@ -68,13 +68,19 @@ app.on('ready', () => {
         win.show();
     });
 
-    localShortcut.register(win, getKey('quit'), function () { win.close(); });
+    localShortcut.register(win, getKey('quit'), () => win.close());
 
-    localShortcut.register(win, getKey('reload'), function () { win.reload(); });
+    localShortcut.register(win, getKey('reload'), () => win.reload());
 
-    localShortcut.register(win, getKey('fullscreen'), function () { win.setSimpleFullScreen(!win.isFullScreen()); });
+    localShortcut.register(win, getKey('fullscreen'), () => win.setSimpleFullScreen(!win.isFullScreen()));
 
-    localShortcut.register(win, getKey('devtools'), function () { win.webContents.toggleDevTools(); });
+    localShortcut.register(win, getKey('devtools'), () => win.webContents.toggleDevTools());
+
+    localShortcut.register(win, getKey('submarin'), () => win.webContents.send('activateSubmarin'));
+
+    localShortcut.register(win, getKey('convert'), () => win.webContents.send('activateConvert'));
+
+    localShortcut.register(win, getKey('settings'), () => win.webContents.send('activateSettings'));
 
     win.loadURL(`file://${__dirname}/index.html`);
 });
