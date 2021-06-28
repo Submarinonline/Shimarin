@@ -14,10 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
         tab.addEventListener('click', function () { activate(this.id); });
     }
 
-    window.api.activateSubmarin(() => { activate('submarin'); });
-    window.api.activateConvert(() => { activate('conv'); });
-    window.api.activateSettings(() => { activate('settings'); });
+    window.api.activateTab((name) => { activate(name); });
 
+    window.api.getConfig('tab').then(v => {
+        if (v?.submarin) { gI('submarin').classList.add('hide'); }
+        if (v?.conv) { gI('conv').classList.add('hide'); }
+        if (v?.settings) { gI('settings').classList.add('hide'); }
+    });
 
     gI('window-ctl-close').addEventListener('click', function () { window.api.close(); });
     gI('window-ctl-restore').addEventListener('click', function () { window.api.restore(); });

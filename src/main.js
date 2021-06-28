@@ -7,12 +7,7 @@ const menhera = require('genhera');
 
 const config = require('./config.json');
 
-let store = new Store();
-
-function getKey(key) {
-    if (!store.has(`key.${key}`)) store.set(`key.${key}`, config.key[key]);
-    return store.get(`key.${key}`);
-}
+const store = new Store();
 
 app.on('ready', () => {
     const win = new BrowserWindow({
@@ -43,24 +38,18 @@ app.on('ready', () => {
     });
 
     win.on('maximize', () => win.webContents.send('maximize'));
-
     win.on('unmaximize', () => win.webContents.send('unmaximize'));
-
     win.on('enter-full-screen', () => win.webContents.send('enterFullScreen'));
-
     win.on('leave-full-screen', () => win.webContents.send('leaveFullScreen'));
 
     ipcMain.on('close', () => win.close());
-
     ipcMain.on('restore', () => win.unmaximize());
-
     ipcMain.on('max', () => win.maximize());
-
     ipcMain.on('min', () => win.minimize());
-
+    ipcMain.on('setConfig', (e, key, value) => store.set(key, value));
     ipcMain.handle('genCjp', (e, str) => { return cjp.generate(str); });
-
     ipcMain.handle('genMhr', (e, str) => { return menhera.generate(str); });
+    ipcMain.handle('getConfig', (e, key) => { return store.get(key); });
 
     ipcMain.on('contentLoaded', () => {
         win.setMenu(null);
@@ -68,19 +57,20 @@ app.on('ready', () => {
         win.show();
     });
 
-    localShortcut.register(win, getKey('quit'), () => win.close());
+    const shortcut = {
+        quit: () => win.close(),
+        reload: () => win.reload(),
+        fullscreen: () => win.setSimpleFullScreen(!win.isFullScreen()),
+        devtools: () => win.webContents.toggleDevTools(),
+        submarin: () => win.webContents.send('activateTab', 'submarin'),
+        convert: () => win.webContents.send('activateTab', 'conv'),
+        settings: () => win.webContents.send('activateTab', 'settings')
+    };
 
-    localShortcut.register(win, getKey('reload'), () => win.reload());
-
-    localShortcut.register(win, getKey('fullscreen'), () => win.setSimpleFullScreen(!win.isFullScreen()));
-
-    localShortcut.register(win, getKey('devtools'), () => win.webContents.toggleDevTools());
-
-    localShortcut.register(win, getKey('submarin'), () => win.webContents.send('activateSubmarin'));
-
-    localShortcut.register(win, getKey('convert'), () => win.webContents.send('activateConvert'));
-
-    localShortcut.register(win, getKey('settings'), () => win.webContents.send('activateSettings'));
+    for (const [name, func] of Object.entries(shortcut)) {
+        if (!store.has(`key.${name}`)) store.set(`key.${name}`, config.key[name]);
+        localShortcut.register(win, store.get(`key.${name}`), func);
+    }
 
     win.loadURL(`file://${__dirname}/index.html`);
 });
