@@ -5,14 +5,13 @@ const Store = require('electron-store');
 const cjp = require('cjp');
 const menhera = require('genhera');
 
-const config = require('./config.json');
-
-const store = new Store();
+const schema = require('./default.json');
+const store = new Store({ schema });
 
 app.on('ready', () => {
     const win = new BrowserWindow({
-        width: store.get('window.width', 1000),
-        height: store.get('window.height', 800),
+        width: store.get('window.width'),
+        height: store.get('window.height'),
         x: store.get('window.x'),
         y: store.get('window.y'),
         minWidth: 535,
@@ -47,8 +46,8 @@ app.on('ready', () => {
     ipcMain.on('max', () => win.maximize());
     ipcMain.on('min', () => win.minimize());
     ipcMain.on('setConfig', (e, key, value) => store.set(key, value));
-    ipcMain.handle('genCjp', (e, str) => { return cjp.generate(str); });
-    ipcMain.handle('genMhr', (e, str) => { return menhera.generate(str); });
+    ipcMain.handle('generateCjp', (e, str) => { return cjp.generate(str); });
+    ipcMain.handle('generateMhr', (e, str) => { return menhera.generate(str); });
     ipcMain.handle('getConfig', (e, key) => { return store.get(key); });
 
     ipcMain.on('contentLoaded', () => {
@@ -68,7 +67,6 @@ app.on('ready', () => {
     };
 
     for (const [name, func] of Object.entries(shortcut)) {
-        if (!store.has(`key.${name}`)) store.set(`key.${name}`, config.key[name]);
         localShortcut.register(win, store.get(`key.${name}`), func);
     }
 

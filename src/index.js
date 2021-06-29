@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
     window.api.activateTab((name) => { activate(name); });
 
     window.api.getConfig('tab').then(v => {
-        if (v?.submarin) { gI('submarin').classList.add('hide'); }
-        if (v?.conv) { gI('conv').classList.add('hide'); }
-        if (v?.settings) { gI('settings').classList.add('hide'); }
+        if (!v?.submarin) { gI('submarin').classList.add('hide'); }
+        if (!v?.conv) { gI('conv').classList.add('hide'); }
+        if (!v?.settings) { gI('settings').classList.add('hide'); }
     });
 
     gI('window-ctl-close').addEventListener('click', function () { window.api.close(); });

@@ -3,11 +3,11 @@ function gI(id) { return document.getElementById(id); }
 function gen() {
     switch (gI('select').value) {
         case 'cjp': {
-            window.parent.api.genCjp(gI('input').value).then(result => { gI('output').value = result; });
+            window.parent.api.generateCjp(gI('input').value).then(result => { gI('output').value = result; });
             break;
         }
         case 'mhr': {
-            window.parent.api.genMhr(gI('input').value).then(result => { gI('output').value = result; });
+            window.parent.api.generateMhr(gI('input').value).then(result => { gI('output').value = result; });
             break;
         }
     }
