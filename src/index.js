@@ -1,5 +1,7 @@
 function gI(id) { return document.getElementById(id); }
 function gC(c) { return document.getElementsByClassName(c); }
+function getConfig(key) { return window.parent.api.getConfig(key); }
+
 function activate(id) {
     const tab = gI(id);
     if (tab.classList.contains('tab-active')) return;
@@ -9,18 +11,16 @@ function activate(id) {
     gI(`cont-${tab.id}`).classList.add('main-cont-show');
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async () => {
     for (const tab of gC('tab')) {
         tab.addEventListener('click', function () { activate(this.id); });
     }
 
     window.api.activateTab((name) => { activate(name); });
 
-    window.api.getConfig('tab').then(v => {
-        if (!v?.submarin) { gI('submarin').classList.add('hide'); }
-        if (!v?.conv) { gI('conv').classList.add('hide'); }
-        if (!v?.settings) { gI('settings').classList.add('hide'); }
-    });
+    if (!await getConfig('tab.submarin')) { gI('submarin').classList.add('hide'); }
+    if (!await getConfig('tab.conv')) { gI('conv').classList.add('hide'); }
+    if (!await getConfig('tab.settings')) { gI('settings').classList.add('hide'); }
 
     gI('window-ctl-close').addEventListener('click', function () { window.api.close(); });
     gI('window-ctl-restore').addEventListener('click', function () { window.api.restore(); });

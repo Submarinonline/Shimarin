@@ -4,15 +4,16 @@
   "version": "1.4",
   "author": "sh",
   "dependencies": {
-    "cjp": "^1.2.1",
+    "cjp": "^1.2.3",
+    "dot-prop": "^6.0.1",
     "electron-localshortcut": "^3.2.1",
-    "electron-store": "^7.0.2",
+    "electron-store": "^8.0.0",
     "genhera": "^1.1.0"
   },
   "devDependencies": {
-    "electron": "^12.0.1",
+    "electron": "^13.1.4",
     "electron-packager": "^15.2.0",
-    "eslint": "^7.22.0",
+    "eslint": "^7.29.0",
     "gulp": "^4.0.2"
   },
   "license": "MIT",

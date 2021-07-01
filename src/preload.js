@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld(
         max: () => ipcRenderer.send('max'),
         min: () => ipcRenderer.send('min'),
         setConfig: (key, value) => ipcRenderer.send('setConfig', key, value),
+        resetConfig: (key) => ipcRenderer.send('resetConfig', key),
         generateCjp: (str) => ipcRenderer.invoke('generateCjp', str),
         generateMhr: (str) => ipcRenderer.invoke('generateMhr', str),
         getConfig: (key) => ipcRenderer.invoke('getConfig', key),

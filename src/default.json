@@ -1,41 +1,35 @@
 {
     "key": {
-        "default": {
-            "quit": [
-                "CommandOrControl+Q"
-            ],
-            "reload": [
-                "CommandOrControl+R",
-                "F5"
-            ],
-            "fullscreen": [
-                "F11"
-            ],
-            "devtools": [
-                "F12"
-            ],
-            "submarin": [
-                "CommandOrControl+1"
-            ],
-            "convert": [
-                "CommandOrControl+2"
-            ],
-            "settings": [
-                "CommandOrControl+3"
-            ]
-        }
+        "quit": [
+            "CommandOrControl+Q"
+        ],
+        "reload": [
+            "CommandOrControl+R",
+            "F5"
+        ],
+        "fullscreen": [
+            "F11"
+        ],
+        "devtools": [
+            "F12"
+        ],
+        "submarin": [
+            "CommandOrControl+1"
+        ],
+        "convert": [
+            "CommandOrControl+2"
+        ],
+        "settings": [
+            "CommandOrControl+3"
+        ]
     },
     "tab": {
-        "default": {
-            "submarin": true,
-            "conv": true,
-            "settings": true
-        }
+        "submarin": true,
+        "conv": true,
+        "settings": true
     },
     "window": {
-        "default": {
-            "width": 1000,
-            "height": 800
-        }
+        "width": 1000,
+        "height": 800
     }
 }
