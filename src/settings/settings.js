@@ -1,3 +1,5 @@
+import { toStr } from '../utils/key.js';
+
 function gI(id) { return document.getElementById(id); }
 // function gC(c) { return document.getElementsByClassName(c); }
 function setConfig(key, value) { window.parent.api.setConfig(key, value); }
@@ -22,8 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     text: '設定'
                 }
             }
+        },
+        {
+            text: 'キー設定',
+            item: {
+                'keyBind.quit': {
+                    type: 'keyBind',
+                    text: 'ウィンドウを閉じる'
+                },
+                'keyBind.reload': {
+                    type: 'keyBind',
+                    text: 'リロード'
+                }
+            }
         }
     ];
+
+
 
     settings.forEach(async c => {
         const root = document.createElement('div');
@@ -42,18 +59,83 @@ document.addEventListener('DOMContentLoaded', () => {
                     checkbox.id = key;
                     checkbox.checked = await getConfig(key);
                     checkbox.addEventListener('change', () => setConfig(key, checkbox.checked));
-                    div.appendChild(checkbox);
 
-                    const span = document.createElement('span');
-                    span.appendChild(document.createTextNode(obj.text));
-                    div.appendChild(span);
+                    const text = document.createElement('span');
+                    text.appendChild(document.createTextNode(obj.text));
 
                     resetFunc.push(() => {
                         resetConfig(key);
                         getConfig(key).then(v => checkbox.checked = v);
                     });
 
+                    div.appendChild(checkbox);
+                    div.appendChild(text);
+
                     root.appendChild(div);
+                    break;
+                }
+                case 'keyBind': {
+                    const div = document.createElement('div');
+                    const table = document.createElement('table');
+                    const addRow = (str) => {
+                        const row = table.insertRow(-1);
+                        const tCell = row.insertCell(-1);
+                        const dCell = row.insertCell(-1);
+                        tCell.classList.add('key-str-cell');
+                        tCell.appendChild(document.createTextNode(str));
+                        dCell.appendChild(document.createTextNode('削除'));
+                        dCell.addEventListener('click', async () => {
+                            const text = tCell.textContent;
+                            const conf = await getConfig(key);
+                            setConfig(key, conf.filter(k => k !== text));
+                            row.remove();
+                        });
+                    };
+                    const initTable = async () => {
+                        const conf = await getConfig(key);
+                        conf.forEach(k => {
+                            addRow(k);
+                        });
+                    };
+
+                    const text = document.createElement('span');
+                    text.appendChild(document.createTextNode(obj.text));
+
+                    const input = document.createElement('input');
+                    input.readOnly = true;
+                    input.addEventListener('keyup', (e) => {
+                        const str = toStr(e);
+                        if (!str) return;
+                        input.value = str;
+                    });
+
+                    const button = document.createElement('button');
+                    button.appendChild(document.createTextNode('追加'));
+                    button.addEventListener('click', async () => {
+                        if (!input.value) return;
+                        const conf = await getConfig(key);
+                        conf.push(input.value);
+                        setConfig(key, conf);
+                        addRow(input.value);
+                        input.value = '';
+                    });
+
+                    initTable();
+
+                    resetFunc.push(() => {
+                        input.value = '';
+                        resetConfig(key);
+                        table.childNodes.forEach(n => n.remove());
+                        initTable();
+                    });
+
+                    div.appendChild(text);
+                    div.appendChild(input);
+                    div.appendChild(button);
+                    div.appendChild(table);
+
+                    root.appendChild(div);
+                    break;
                 }
             }
         }

@@ -1,5 +1,5 @@
 {
-    "key": {
+    "keyBind": {
         "quit": [
             "CommandOrControl+Q"
         ],
