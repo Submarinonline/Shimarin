@@ -81,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         const row = table.insertRow(-1);
                         const tCell = row.insertCell(-1);
                         const dCell = row.insertCell(-1);
-                        tCell.classList.add('key-str-cell');
                         tCell.appendChild(document.createTextNode(str));
                         dCell.appendChild(document.createTextNode('削除'));
+                        dCell.classList.add('del-cell');
                         dCell.addEventListener('click', async () => {
                             const text = tCell.textContent;
                             const conf = await getConfig(key);
@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     text.appendChild(document.createTextNode(obj.text));
 
                     const input = document.createElement('input');
+                    //input.classList.add('key-input');
                     input.readOnly = true;
                     input.addEventListener('keyup', (e) => {
                         const str = toStr(e);
