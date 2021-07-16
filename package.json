@@ -13,16 +13,13 @@
   "devDependencies": {
     "electron": "^13.1.7",
     "electron-packager": "^15.2.0",
-    "eslint": "^7.30.0",
-    "gulp": "^4.0.2"
+    "eslint": "^7.30.0"
   },
   "license": "MIT",
   "main": "src/main.js",
   "private": true,
   "scripts": {
     "start": "electron .",
-    "build": "gulp package",
-    "build:linux": "gulp package-linux",
-    "build:win": "gulp package-win"
+    "build": "node tasks/package.js"
   }
 }
