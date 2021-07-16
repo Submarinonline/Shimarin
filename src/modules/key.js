@@ -1,4 +1,4 @@
-export function toStr(e) {
+export function toElectronAccelerator(e) {
     const res = [];
     let key;
     if (/CONTROL|SHIFT|ALT/i.test(e.key)) return;

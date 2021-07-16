@@ -10,6 +10,8 @@ contextBridge.exposeInMainWorld(
         min: () => ipcRenderer.send('min'),
         setConfig: (key, value) => ipcRenderer.send('setConfig', key, value),
         resetConfig: (key) => ipcRenderer.send('resetConfig', key),
+        disableShortcuts: () => ipcRenderer.send('disableShortcuts'),
+        enableShortcuts: () => ipcRenderer.send('enableShortcuts'),
         generateCjp: (str) => ipcRenderer.invoke('generateCjp', str),
         generateMhr: (str) => ipcRenderer.invoke('generateMhr', str),
         getConfig: (key) => ipcRenderer.invoke('getConfig', key),

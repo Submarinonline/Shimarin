@@ -13,19 +13,19 @@ function gen() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    gI('select').addEventListener('change', function () { gen(); });
+document.addEventListener('DOMContentLoaded', () => {
+    gI('select').addEventListener('change', gen);
 
-    gI('copy').addEventListener('click', function () {
+    gI('copy').addEventListener('click', () => {
         gI('output').select();
         document.execCommand('copy');
     });
 
-    gI('clear').addEventListener('click', function () {
+    gI('clear').addEventListener('click', () => {
         gI('input').value = '';
         gI('output').value = '';
     });
 
-    gI('input').addEventListener('input', function () { gen(); });
-    gI('output').addEventListener('click', function () { this.select(); });
+    gI('input').addEventListener('input', gen);
+    gI('output').addEventListener('click', () => gI('output').select());
 });

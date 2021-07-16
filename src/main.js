@@ -3,6 +3,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const localShortcut = require('electron-localshortcut');
 const Store = require('electron-store');
 const dotProp = require('dot-prop');
+
 const cjp = require('cjp');
 const menhera = require('genhera');
 
@@ -48,6 +49,8 @@ app.on('ready', () => {
     ipcMain.on('min', () => win.minimize());
     ipcMain.on('setConfig', (e, key, value) => store.set(key, value));
     ipcMain.on('resetConfig', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
+    ipcMain.on('disableShortcuts', () => localShortcut.disableAll(win));
+    ipcMain.on('enableShortcuts', () => localShortcut.enableAll(win));
     ipcMain.handle('generateCjp', (e, str) => { return cjp.generate(str); });
     ipcMain.handle('generateMhr', (e, str) => { return menhera.generate(str); });
     ipcMain.handle('getConfig', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });

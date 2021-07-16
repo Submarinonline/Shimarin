@@ -6,14 +6,14 @@
   "dependencies": {
     "cjp": "^1.2.3",
     "dot-prop": "^6.0.1",
-    "electron-localshortcut": "^3.2.1",
+    "electron-localshortcut": "git+https://github.com/shaaaaaQ/electron-localshortcut.git#master",
     "electron-store": "^8.0.0",
     "genhera": "^1.1.0"
   },
   "devDependencies": {
-    "electron": "^13.1.4",
+    "electron": "^13.1.7",
     "electron-packager": "^15.2.0",
-    "eslint": "^7.29.0",
+    "eslint": "^7.30.0",
     "gulp": "^4.0.2"
   },
   "license": "MIT",

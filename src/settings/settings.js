@@ -1,4 +1,4 @@
-import { toStr } from '../utils/key.js';
+import { toElectronAccelerator } from '../modules/key.js';
 
 function gI(id) { return document.getElementById(id); }
 // function gC(c) { return document.getElementsByClassName(c); }
@@ -105,9 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     //input.classList.add('key-input');
                     input.readOnly = true;
                     input.addEventListener('keyup', (e) => {
-                        const str = toStr(e);
-                        if (!str) return;
-                        input.value = str;
+                        const accelerator = toElectronAccelerator(e);
+                        if (!accelerator) return;
+                        input.value = accelerator;
+                    });
+                    input.addEventListener('blur', () => {
+                        window.parent.api.enableShortcuts();
+                    });
+                    input.addEventListener('focus', () => {
+                        window.parent.api.disableShortcuts();
                     });
 
                     const button = document.createElement('button');
