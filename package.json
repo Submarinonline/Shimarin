@@ -20,6 +20,7 @@
   "main": "src/main.js",
   "private": true,
   "scripts": {
+    "start": "electron .",
     "build": "gulp package",
     "build:linux": "gulp package-linux",
     "build:win": "gulp package-win"
