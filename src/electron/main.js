@@ -75,5 +75,5 @@ app.on('ready', () => {
         localShortcut.register(win, store.get(`keyBind.${name}`, dotProp.get(defaultConfig, `keyBind.${name}`)), func);
     }
 
-    win.loadURL(`file://${__dirname}/index/index.html`);
+    win.loadURL(`file://${__dirname}/index.html`);
 });

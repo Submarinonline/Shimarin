@@ -22,7 +22,9 @@
   "main": "src/electron/main.js",
   "private": true,
   "scripts": {
-    "start": "electron .",
-    "build": "node tasks/package.js"
+    "build": "npm run build:react && node tasks/package.js",
+    "build:react": "NODE_ENV=production node ./bundle.js",
+    "start": "npm run start:react & electron .",
+    "start:react": "WATCH=true node ./bundle.js"
   }
 }
