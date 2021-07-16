@@ -19,7 +19,7 @@
     "eslint": "7.30.x"
   },
   "license": "MIT",
-  "main": "src/main.js",
+  "main": "src/electron/main.js",
   "private": true,
   "scripts": {
     "start": "electron .",
