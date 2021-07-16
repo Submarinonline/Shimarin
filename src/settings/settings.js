@@ -35,6 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 'keyBind.reload': {
                     type: 'keyBind',
                     text: 'リロード'
+                },
+                'keyBind.fullscreen': {
+                    type: 'keyBind',
+                    text: 'フルスクリーン切り替え'
+                },
+                'keyBind.devtools': {
+                    type: 'keyBind',
+                    text: 'DevToolsを開く/閉じる'
+                },
+                'keyBind.submarin': {
+                    type: 'keyBind',
+                    text: 'Submarinのページを開く'
+                },
+                'keyBind.convert': {
+                    type: 'keyBind',
+                    text: '変換のページを開く'
+                },
+                'keyBind.settings': {
+                    type: 'keyBind',
+                    text: '設定のページを開く'
                 }
             }
         }
