@@ -16,7 +16,8 @@
     "electron": "13.1.7",
     "electron-packager": "15.2.0",
     "esbuild": "0.12.x",
-    "eslint": "7.30.x"
+    "eslint": "7.30.x",
+    "eslint-plugin-react": "^7.24.0"
   },
   "license": "MIT",
   "main": "src/electron/main.js",
