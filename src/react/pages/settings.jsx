@@ -1,15 +1,15 @@
-import React from "react"
+import React from 'react';
 
-import Header from "../components/header"
-import "../css/settings.css"
+import Header from '../components/header';
+import '../css/settings.css';
 
 const SettingsPage = () => {
-  return (
-    <>
-      <Header />
-      <div id="main"></div>
-    </>
-  )
-}
+    return (
+        <>
+            <Header />
+            <div id="main"></div>
+        </>
+    );
+};
 
-export default SettingsPage
+export default SettingsPage;
