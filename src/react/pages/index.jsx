@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '../components/header';
-import '../css/index.css';
+// import '../css/index.css';
 
 const IndexPage = () => {
     return (

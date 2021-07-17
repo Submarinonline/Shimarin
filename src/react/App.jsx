@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route
 } from 'react-router-dom';
@@ -13,7 +13,7 @@ import SettingsPage from './pages/settings';
 ReactDOM.render(
     <Router>
         <Switch>
-            <Route path="/" component={IndexPage} />
+            <Route exact path="/" component={IndexPage} />
             <Route path="/conv" component={ConvPage} />
             <Route path="/settings" component={SettingsPage} />
         </Switch>

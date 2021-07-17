@@ -22,11 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!await getConfig('tab.conv')) gI('conv').classList.add('hide');
     if (!await getConfig('tab.settings')) gI('settings').classList.add('hide');
 
-    gI('window-ctl-close').addEventListener('click', () => window.api.close());
-    gI('window-ctl-restore').addEventListener('click', () => window.api.restore());
-    gI('window-ctl-max').addEventListener('click', () => window.api.max());
-    gI('window-ctl-min').addEventListener('click', () => window.api.min());
-
     window.api.maximize(() => {
         gI('window-ctl-max').classList.remove('window-ctl-show');
         gI('window-ctl-restore').classList.add('window-ctl-show');

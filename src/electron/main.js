@@ -4,9 +4,6 @@ const localShortcut = require('electron-localshortcut');
 const Store = require('electron-store');
 const dotProp = require('dot-prop');
 
-const cjp = require('cjp');
-const menhera = require('genhera');
-
 const defaultConfig = require('./default.json');
 const store = new Store();
 
@@ -38,42 +35,48 @@ app.on('ready', () => {
         store.set('window.isMaximized', win.isMaximized());
     });
 
-    win.on('maximize', () => win.webContents.send('maximize'));
-    win.on('unmaximize', () => win.webContents.send('unmaximize'));
-    win.on('enter-full-screen', () => win.webContents.send('enterFullScreen'));
-    win.on('leave-full-screen', () => win.webContents.send('leaveFullScreen'));
+    win.on('maximize',              () => win.webContents.send('windowMaximized'));
+    win.on('unmaximize',            () => win.webContents.send('windowUnmaximized'));
+    win.on('enter-full-screen',     () => win.webContents.send('windowEnteredFullScreen'));
+    win.on('leave-full-screen',     () => win.webContents.send('windowLeftFullScreen'));
 
-    ipcMain.on('close', () => win.close());
-    ipcMain.on('restore', () => win.unmaximize());
-    ipcMain.on('max', () => win.maximize());
-    ipcMain.on('min', () => win.minimize());
-    ipcMain.on('setConfig', (e, key, value) => store.set(key, value));
-    ipcMain.on('resetConfig', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
-    ipcMain.on('disableShortcuts', () => localShortcut.disableAll(win));
-    ipcMain.on('enableShortcuts', () => localShortcut.enableAll(win));
-    ipcMain.handle('generateCjp', (e, str) => { return cjp.generate(str); });
-    ipcMain.handle('generateMhr', (e, str) => { return menhera.generate(str); });
-    ipcMain.handle('getConfig', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });
+    ipcMain.on('closeWindow',       () => win.close());
+    ipcMain.on('unmaximizeWindow',  () => win.unmaximize());
+    ipcMain.on('maximizeWindow',    () => win.maximize());
+    ipcMain.on('minimizeWindow',    () => win.minimize());
 
-    ipcMain.on('contentLoaded', () => {
+    ipcMain.handle('getConfig',     (e, key) => store.get(key, dotProp.get(defaultConfig, key)));
+    ipcMain.on('setConfig',         (e, key, value) => store.set(key, value));
+    ipcMain.on('resetConfig',       (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
+
+    ipcMain.on('disableKeyboardShortcuts',  () => localShortcut.disableAll(win));
+    ipcMain.on('enableKeyboardShortcuts',   () => localShortcut.enableAll(win));
+
+    // ipcMain.on('appReady', () => {
+    //     if (store.get('window.isMaximized')) win.maximize();
+    //     win.setMenu(null);
+    //     win.show();
+    // });
+    win.once('ready-to-show', () => {
+        if (store.get('window.isMaximized')) win.maximize();
         win.setMenu(null);
-        if (store.get('window.isMaximized')) { win.maximize(); }
-        win.show();
+        win.show()
     });
 
-    const shortcut = {
-        quit: () => win.close(),
-        reload: () => win.reload(),
-        fullscreen: () => win.setSimpleFullScreen(!win.isFullScreen()),
-        devtools: () => win.webContents.toggleDevTools(),
-        submarin: () => win.webContents.send('activateTab', 'submarin'),
-        convert: () => win.webContents.send('activateTab', 'conv'),
-        settings: () => win.webContents.send('activateTab', 'settings')
+    const keyboardShortcut = {
+        quit:           () => win.close(),
+        reload:         () => win.reload(),
+        fullscreen:     () => win.setSimpleFullScreen(!win.isFullScreen()),
+        devtools:       () => win.webContents.toggleDevTools(),
+        submarinScreen: () => win.webContents.send('moveScreen', 'submarin'),
+        convertScreen:  () => win.webContents.send('moveScreen', 'conv'),
+        settingsScreen: () => win.webContents.send('moveScreen', 'settings'),
     };
+    for (const name in keyboardShortcut)
+        localShortcut.register(
+            win,
+            store.get(`keyBind.${name}`, dotProp.get(defaultConfig, `keyBind.${name}`)),
+            keyboardShortcut[name]);
 
-    for (const [name, func] of Object.entries(shortcut)) {
-        localShortcut.register(win, store.get(`keyBind.${name}`, dotProp.get(defaultConfig, `keyBind.${name}`)), func);
-    }
-
-    win.loadURL(`file://${__dirname}/pub/index.html`);
+    win.loadURL(`file://${__dirname}/app/index.html`);
 });

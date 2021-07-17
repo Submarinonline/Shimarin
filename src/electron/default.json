@@ -13,13 +13,13 @@
         "devtools": [
             "F12"
         ],
-        "submarin": [
+        "submarinScreen": [
             "CommandOrControl+1"
         ],
-        "convert": [
+        "convertScreen": [
             "CommandOrControl+2"
         ],
-        "settings": [
+        "settingsScreen": [
             "CommandOrControl+3"
         ]
     },

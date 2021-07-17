@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '../components/header';
-import '../css/conv.css';
+// import '../css/conv.css';
 
 const ConvPage = () => {
     return (
