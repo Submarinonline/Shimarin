@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Header from '../components/header';
+import Header from '../components/mainWindowHeader';
 // import '../css/index.css';
 
 const IndexPage = () => {
     return (
         <>
-            <Header />
+            <Header pageId="submarin" />
             <div id="bar" />
             <div className="main-cont main-cont-show" id="cont-submarin">
                 a

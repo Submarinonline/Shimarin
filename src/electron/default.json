@@ -7,6 +7,9 @@
             "CommandOrControl+R",
             "F5"
         ],
+        "close": [
+            "CommandOrControl+W"
+        ],
         "fullscreen": [
             "F11"
         ],

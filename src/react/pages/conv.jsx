@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Header from '../components/header';
+import Header from '../components/mainWindowHeader';
 // import '../css/conv.css';
 
 const ConvPage = () => {
     return (
         <>
-            <Header />
+            <Header pageId="conv" />
             <div id="header">
                 <select id="select">
                     <option value='cjp'>怪しい日本語</option>
