@@ -5,28 +5,31 @@
   "author": "sh",
   "dependencies": {
     "cjp": "1.x",
-    "dot-prop": "6.0.1",
+    "dot-prop": "6.0.x",
+    "electron": "13.1.7",
     "electron-localshortcut": "git+https://github.com/shaaaaaQ/electron-localshortcut.git#master",
-    "electron-store": "8.0.0",
+    "electron-store": "8.0.x",
     "genhera": "1.x",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-router-dom": "5.2.0",
-    "styled-components": "5.3.0"
+    "react-router-dom": "5.2.x"
   },
   "devDependencies": {
-    "electron": "13.1.7",
-    "electron-packager": "15.2.0",
-    "eslint": "7.30.x",
-    "eslint-plugin-react": "^7.24.0"
+    "@vitejs/plugin-react-refresh": "1.3.x",
+    "electron-packager": "15.3.x",
+    "eslint": "7.32.x",
+    "eslint-plugin-react": "7.24.x",
+    "sass": "1.37.x",
+    "vite": "2.4.x"
   },
   "license": "MIT",
   "main": "src/electron/main.js",
   "private": true,
   "scripts": {
     "build": "npm run build:react && node tasks/package.js",
-    "build:react": "NODE_ENV=production node ./bundle.js",
-    "start": "npm run start:react & electron .",
-    "start:react": "WATCH=true node ./bundle.js"
+    "build:react": "vite build",
+    "dev": "npm run dev:react & electron .",
+    "dev:react": "vite",
+    "start": "npm run dev"
   }
 }
