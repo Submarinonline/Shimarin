@@ -68,7 +68,7 @@ app.on('ready', () => {
             nodeIntegration: false,
         }
     });
-    mainWindow.loadURL(`file://${__dirname}/app/mainWindow.html`);
+    mainWindow.loadURL(`file://${__dirname}/app/dist/mainWindow.html`);
     ipcMain.on('mainWindowClose',           () => mainWindow.close());
     ipcMain.on('mainWindowUnmaximize',      () => mainWindow.unmaximize());
     ipcMain.on('mainWindowMaximize',        () => mainWindow.maximize());
