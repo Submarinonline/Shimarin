@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 
 const SettingsPage = () => {
     return (
-        <Layout pageId="settings">
+        <Layout windowApi={window.mainWindow} pageId="settings">
             <div id="main"></div>
         </Layout>
     );

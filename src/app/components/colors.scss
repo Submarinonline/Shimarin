@@ -1,0 +1,31 @@
+$c-accent: #41adef;
+
+$c-text: #000;
+$c-bg: #dfdfdf;
+
+$c-titlebar: #dfdfdf;
+$c-titlebar-text:  #000000;
+
+$c-tab-hover: #f4f4f4;
+$c-tab-active: #fff;
+
+$c-win-ctl-hover: #b9b9b9;
+$c-win-ctl-close-hover: #41ADEF;
+$c-win-ctl-close-hover-text: #fff;
+
+@media (prefers-color-scheme: dark) {
+
+  $c-text: #fff;
+  $c-bg: #dfdfdf;
+
+  $c-titlebar: #dfdfdf;
+  $c-titlebar-text:  #000000;
+
+  $c-tab-hover: #f4f4f4;
+  $c-tab-active: #fff;
+
+  $c-win-ctl-hover: #b9b9b9;
+  $c-win-ctl-close-hover: #41ADEF;
+  $c-win-ctl-close-hover-text: #fff;
+
+}

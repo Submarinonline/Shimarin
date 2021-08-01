@@ -12,7 +12,8 @@
     "genhera": "1.x",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-router-dom": "5.2.x"
+    "react-router-dom": "5.2.x",
+    "reseter.css": "2.0.x"
   },
   "devDependencies": {
     "@vitejs/plugin-react-refresh": "1.3.x",

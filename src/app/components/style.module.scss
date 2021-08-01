@@ -1,14 +1,132 @@
+@import "./colors.scss";
+@import "./aliases.scss";
+
+
+// Header
+
 header {
-  // -webkit-app-region: drag;
-  // user-select: none;
-  // background: var(--titlebar);
-  // height: 32px;
-  // margin-top: 4px;
-  // margin-left: 4px;
-  // display: flex;
+  @include flex;
+  background: $c-titlebar;
+  user-select: none;
+  -webkit-app-region: drag;
 }
 
-.header_tab {
-  &.active {
+.row {
+  @include flex;
+  width: 100%;
+  height: 36px;
+}
+
+.window_ctl {
+  @include flex($justify: stretch);
+  height: inherit;
+  -webkit-app-region: no-drag;
+
+  &__button {
+    @include flex($justify: center);
+    width: 50px;
+    height: 100%;
+    padding-bottom: 12px;
+    &:hover {
+      background: $c-win-ctl-hover;
+
+      &.close {
+        background: $c-win-ctl-close-hover;
+      }
+    }
+
+    svg {
+      margin-top: auto;
+      fill: $c-titlebar-text;
+    }
   }
+}
+
+.header_tab_bar {
+  @include flex($justify: start);
+  height: 100%;
+  padding-top: 4px;
+  padding-left: 16px;
+  padding-right: 8px;
+  overflow-x: auto;
+
+  &.wide {
+    padding-top: 0;
+    padding-left: 8px;
+  }
+
+  &__tab {
+    @include flex($justify: start);
+    min-width: 80px;
+    // width: 120px;
+    height: 100%;
+    padding-top: 2px;
+    padding-left: 18px;
+    padding-right: 20px;
+    position: relative;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    color: $c-text;
+    -webkit-app-region: no-drag;
+
+    &::before {
+      left: -8px;
+      border-bottom-right-radius: 8px;
+    }
+    &::after {
+      right: -8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    &:hover {
+      background: $c-tab-hover;
+      &::before,
+      &::after {
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        bottom: 0;
+        content: '';
+      }
+      &::before {
+        box-shadow: 2px 2px $c-tab-hover;
+      }
+      &::after {
+        box-shadow: -2px 2px $c-tab-hover;
+      }
+    }
+
+    &.active {
+      background: $c-tab-active;
+      z-index: 810;
+      &::before,
+      &::after {
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        bottom: 0;
+        content: '';
+      }
+      &::before {
+        box-shadow: 2px 2px $c-tab-active;
+      }
+      &::after {
+        box-shadow: -2px 2px $c-tab-active;
+      }
+    }
+  }
+}
+
+
+// Layout
+
+main {
+  height: calc(100vh - 36px);
+  background: $c-tab-active;
+  overflow: hidden;
+  /*
+  &.windowFullScreen {
+    height: 100vh;
+  }
+  */
 }

@@ -69,7 +69,7 @@ app.on('ready', () => {
         frame: false,
         show: false,
         title: 'Shimarin',
-        icon: path.join(__dirname, '../assets/icons/icon.png'),
+        icon: path.join(__dirname, 'assets/icons/icon.png'),
         webPreferences: {
             preload: path.join(__dirname, 'preload/mainWindow.js'),
             worldSafeExecuteJavaScript: true,

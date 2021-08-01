@@ -1,19 +1,13 @@
-:root {
-    --border: #41ADEF;
-    --bg: #fff;
-    --text: #000;
-}
+@import "../components/colors.scss";
+
+$c-bg: #fff;
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --border: #41ADEF;
-        --bg: #121212;
-        --text: #fff;
-    }
+    $c-bg: #121212;
 }
 
 body {
-    background: var(--bg);
+    background: $c-bg;
 }
 
 textarea:focus,
@@ -37,8 +31,8 @@ select:focus {
     height: 30px;
     width: calc(25% - 10px);
     border-radius: 10px;
-    border: 2px solid var(--border);
-    background: var(--bg);
+    border: 2px solid $c-accent;
+    background: $c-bg;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -47,8 +41,8 @@ select:focus {
     width: calc(50% - 10px);
     height: 30px;
     border-radius: 10px;
-    border: 2px solid var(--border);
-    background: var(--bg);
+    border: 2px solid $c-accent;
+    background: $c-bg;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -60,10 +54,10 @@ select:focus {
     padding: 5px;
     width: calc(50% - 10px);
     height: calc(100% - 10px);
-    border: 2px solid var(--border);
+    border: 2px solid $c-accent;
     border-radius: 10px;
-    background: var(--bg);
-    color: var(--text);
+    background: $c-bg;
+    color: $c-text;
     overflow: hidden;
     resize: none;
 }

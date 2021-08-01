@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 
 const ConvPage = () => {
     return (
-        <Layout pageId="conv">
+        <Layout windowApi={window.mainWindow} pageId="conv">
             <div id="header">
                 <select id="select">
                     <option value='cjp'>怪しい日本語</option>
