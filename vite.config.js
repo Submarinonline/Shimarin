@@ -9,7 +9,7 @@ const config = {
     outDir: "dist",
     rollupOptions: {
       input: {
-        main: "mainWindow.html"
+        main: "src/app/mainWindow.html"
       }
     }
   }
