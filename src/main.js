@@ -38,6 +38,15 @@ class AppWindow extends BrowserWindow {
 
 // initializer
 
+const loadUrl = (w, path) => {
+    const distUrlPrefix = `file://${__dirname}/app/dist`
+    const distUrlPrefixDev = "http://localhost:3000"
+
+    process.env.NODE_ENV==="development"
+        ? w.loadURL(`${distUrlPrefixDev}/${path}`)
+        : w.loadURL(`${distUrlPrefix}/${path}`);
+}
+
 app.on('ready', () => {
 
 
@@ -68,7 +77,7 @@ app.on('ready', () => {
             nodeIntegration: false,
         }
     });
-    mainWindow.loadURL(`file://${__dirname}/app/dist/mainWindow.html`);
+    loadUrl(mainWindow, "mainWindow.html");
     ipcMain.on('mainWindowClose',           () => mainWindow.close());
     ipcMain.on('mainWindowUnmaximize',      () => mainWindow.unmaximize());
     ipcMain.on('mainWindowMaximize',        () => mainWindow.maximize());

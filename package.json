@@ -1,7 +1,7 @@
 {
   "name": "shimarin",
   "description": "",
-  "version": "1.4",
+  "version": "0.1.4",
   "author": "sh",
   "dependencies": {
     "cjp": "1.x",
@@ -19,16 +19,19 @@
     "electron-packager": "15.3.x",
     "eslint": "7.32.x",
     "eslint-plugin-react": "7.24.x",
+    "npm-run-all": "4.1.x",
     "sass": "1.37.x",
     "vite": "2.4.x"
   },
   "license": "MIT",
-  "main": "src/electron/main.js",
+  "main": "src/main.js",
   "private": true,
   "scripts": {
-    "build": "npm run build:react && node tasks/package.js",
+    "build": "run-s build:react build:electron",
+    "build:electron": "node task/package.js",
     "build:react": "vite build",
-    "dev": "npm run dev:react & electron .",
+    "dev": "NODE_ENV=development run-p dev:react dev:electron",
+    "dev:electron": "electron .",
     "dev:react": "vite",
     "start": "npm run dev"
   }

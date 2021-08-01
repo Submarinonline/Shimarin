@@ -1,17 +1,15 @@
 import React from 'react';
 
-import Header from '../components/mainWindowHeader';
-// import '../css/index.css';
+import Layout from '../components/layout';
 
 const IndexPage = () => {
     return (
-        <>
-            <Header pageId="submarin" />
+        <Layout pageId="submarin">
             <div id="bar" />
             <div className="main-cont main-cont-show" id="cont-submarin">
                 a
             </div>
-        </>
+        </Layout>
     );
 };
 

@@ -1,14 +1,13 @@
 import React from 'react';
 
-import Header from '../components/mainWindowHeader';
+import Layout from '../components/layout';
 // import '../css/settings.css';
 
 const SettingsPage = () => {
     return (
-        <>
-            <Header pageId="settings" />
+        <Layout pageId="settings">
             <div id="main"></div>
-        </>
+        </Layout>
     );
 };
 
