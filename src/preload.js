@@ -3,7 +3,6 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld(
     'api',
     {
-        contentLoaded: () => ipcRenderer.send('contentLoaded'),
         close: () => ipcRenderer.send('close'),
         restore: () => ipcRenderer.send('restore'),
         max: () => ipcRenderer.send('max'),

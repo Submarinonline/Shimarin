@@ -33,6 +33,7 @@ select:focus {
 
 #copy,
 #clear {
+    color: var(--text);
     padding: 0px;
     height: 30px;
     width: calc(25% - 10px);
@@ -44,6 +45,7 @@ select:focus {
 }
 
 #select {
+    color: var(--text);
     width: calc(50% - 10px);
     height: 30px;
     border-radius: 10px;

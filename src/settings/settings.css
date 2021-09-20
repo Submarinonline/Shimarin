@@ -1,15 +1,29 @@
 :root {
-    --kb-table-bg: gray;
-    --kb-td-bg: white;
-    --del-cell-hover: gray;
+    --border: #41ADEF;
+    --table-border: #000;
+    --input-bottom: #000;
+    --bg: #fff;
+    --text: #000;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --kb-table-bg: gray;
-        --kb-td-bg: white;
-        --del-cell-hover: gray;
+        --border: #41ADEF;
+        --table-border: #ccc;
+        --input-bottom: #ccc;
+        --bg: #121212;
+        --text: #ccc;
     }
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+input:focus,
+button:focus {
+    outline: none;
 }
 
 h3,
@@ -19,14 +33,31 @@ span {
     user-select: none;
 }
 
-table {
-    background: var(--kb-table-bg);
+button {
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 100vh;
+    background: var(--bg);
 }
 
 td {
-    background: var(--kb-td-bg);
+    border: 2px solid var(--table-border);
 }
 
-.del-cell:hover {
-    background: var(--del-cell-hover);
+div {
+    margin-bottom: 25px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.key-input {
+    color: var(--text);
+    margin-left: 20px;
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid var(--input-bottom);
 }

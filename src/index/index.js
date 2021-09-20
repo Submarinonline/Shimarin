@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         tab.addEventListener('click', () => activate(tab.id));
     }
 
-    window.api.activateTab((name) => { activate(name); });
+    window.api.activateTab((id) => { activate(id); });
 
     if (!await getConfig('tab.submarin')) gI('submarin').classList.add('hide');
     if (!await getConfig('tab.conv')) gI('conv').classList.add('hide');
@@ -40,7 +40,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     window.api.enterFullScreen(() => document.body.classList.add('fullscreen'));
     window.api.leaveFullScreen(() => document.body.classList.remove('fullscreen'));
-
-
-    window.api.contentLoaded();
 });

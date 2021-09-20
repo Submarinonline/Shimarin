@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     text.appendChild(document.createTextNode(obj.text));
 
                     const input = document.createElement('input');
-                    //input.classList.add('key-input');
+                    input.classList.add('key-input');
                     input.readOnly = true;
                     input.addEventListener('keyup', (e) => {
                         const accelerator = toElectronAccelerator(e);

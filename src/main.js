@@ -55,7 +55,7 @@ app.on('ready', () => {
     ipcMain.handle('generateMhr', (e, str) => { return menhera.generate(str); });
     ipcMain.handle('getConfig', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });
 
-    ipcMain.on('contentLoaded', () => {
+    win.once('ready-to-show', () => {
         win.setMenu(null);
         if (store.get('window.isMaximized')) { win.maximize(); }
         win.show();
