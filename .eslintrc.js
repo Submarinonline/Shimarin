@@ -5,11 +5,19 @@ module.exports = {
         'es2021': true,
         'node': true
     },
-    'extends': 'eslint:recommended',
+    'extends': [
+        'eslint:recommended',
+        'plugin:react/recommended'
+    ],
     'parserOptions': {
-        'ecmaVersion': 12,
-        'sourceType': 'module'
+        'ecmaFeatures': {
+            'jsx': true
+        },
+        'ecmaVersion': 12
     },
+    'plugins': [
+        'react'
+    ],
     'rules': {
         'indent': [
             'error',

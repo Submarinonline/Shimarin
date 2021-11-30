@@ -6,7 +6,7 @@ const opt = {
     arch: 'x64',
     platform: 'win32',
     overwrite: true,
-    icon: 'icon/icon.ico',
+    icon: 'assets/icon.ico',
     ignore: '(.vscode|.gitignore|tasks|package-lock.json|.eslintrc.js)',
 };
 

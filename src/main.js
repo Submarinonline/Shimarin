@@ -4,9 +4,6 @@ const localShortcut = require('electron-localshortcut');
 const Store = require('electron-store');
 const dotProp = require('dot-prop');
 
-const cjp = require('cjp');
-const menhera = require('genhera');
-
 const defaultConfig = require('./default.json');
 const store = new Store();
 
@@ -21,7 +18,7 @@ app.on('ready', () => {
         frame: false,
         show: false,
         title: 'Shimarin',
-        icon: path.join(__dirname, '../icon/icon.png'),
+        icon: path.join(__dirname, '../assets/icon.png'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             worldSafeExecuteJavaScript: true,
@@ -51,8 +48,6 @@ app.on('ready', () => {
     ipcMain.on('resetConfig', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
     ipcMain.on('disableShortcuts', () => localShortcut.disableAll(win));
     ipcMain.on('enableShortcuts', () => localShortcut.enableAll(win));
-    ipcMain.handle('generateCjp', (e, str) => { return cjp.generate(str); });
-    ipcMain.handle('generateMhr', (e, str) => { return menhera.generate(str); });
     ipcMain.handle('getConfig', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });
 
     win.once('ready-to-show', () => {
@@ -65,15 +60,12 @@ app.on('ready', () => {
         quit: () => win.close(),
         reload: () => win.reload(),
         fullscreen: () => win.setSimpleFullScreen(!win.isFullScreen()),
-        devtools: () => win.webContents.toggleDevTools(),
-        submarin: () => win.webContents.send('activateTab', 'submarin'),
-        convert: () => win.webContents.send('activateTab', 'conv'),
-        settings: () => win.webContents.send('activateTab', 'settings')
+        devtools: () => win.webContents.toggleDevTools()
     };
 
     for (const [name, func] of Object.entries(shortcut)) {
         localShortcut.register(win, store.get(`keyBind.${name}`, dotProp.get(defaultConfig, `keyBind.${name}`)), func);
     }
 
-    win.loadURL(`file://${__dirname}/index/index.html`);
+    win.loadURL(`file://${path.join(__dirname, '../app/index.html')}`);
 });

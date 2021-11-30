@@ -4,16 +4,20 @@
   "version": "1.4",
   "author": "sh",
   "dependencies": {
-    "cjp": "^1.2.3",
     "dot-prop": "^6.0.1",
     "electron-localshortcut": "git+https://github.com/shaaaaaQ/electron-localshortcut.git#master",
-    "electron-store": "^8.0.0",
-    "genhera": "^1.1.0"
+    "electron-store": "^8.0.0"
   },
   "devDependencies": {
+    "cjp": "^1.2.3",
     "electron": "^13.1.7",
     "electron-packager": "^15.2.0",
-    "eslint": "^7.30.0"
+    "esbuild": "^0.14.1",
+    "eslint": "^7.30.0",
+    "eslint-plugin-react": "^7.27.1",
+    "genhera": "^1.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "license": "MIT",
   "main": "src/main.js",
