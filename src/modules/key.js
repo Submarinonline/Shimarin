@@ -6,7 +6,10 @@ export function toElectronAccelerator(e) {
     if (e.shiftKey) res.push('Shift');
     if (e.altKey) res.push('Alt');
     // ここに矢印キーとかを追加
-    if (!key || e.key.length === 1) { key = e.key.toUpperCase(); }
+    console.log(e.key);
+    if (/^[A-Z]$/i.test(e.key)) { key = e.key.toUpperCase(); }
+    if (/^[0-9]$/i.test(e.key)) { key = e.key; }
+
     if (!key) return;
     res.push(key);
     return res.join('+');
