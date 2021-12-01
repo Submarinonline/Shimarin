@@ -12,21 +12,7 @@
         ],
         "devtools": [
             "F12"
-        ],
-        "submarin": [
-            "CommandOrControl+1"
-        ],
-        "convert": [
-            "CommandOrControl+2"
-        ],
-        "settings": [
-            "CommandOrControl+3"
         ]
-    },
-    "tab": {
-        "submarin": true,
-        "conv": false,
-        "settings": true
     },
     "window": {
         "width": 1000,

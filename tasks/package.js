@@ -7,7 +7,7 @@ const opt = {
     platform: 'win32',
     overwrite: true,
     icon: 'assets/icon.ico',
-    ignore: '(.vscode|.gitignore|tasks|package-lock.json|.eslintrc.js)',
+    ignore: '(.vscode|.gitignore|tasks|package-lock.json|.eslintrc.js|src/renderer)',
 };
 
 packager(opt);

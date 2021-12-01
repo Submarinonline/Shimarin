@@ -13,9 +13,9 @@ app.on('ready', () => {
         height: store.get('window.height'),
         x: store.get('window.x'),
         y: store.get('window.y'),
-        minWidth: 535,
-        minHeight: 300,
-        frame: false,
+        //minWidth: 535,
+        //minHeight: 300,
+        //frame: false,
         show: false,
         title: 'Shimarin',
         icon: path.join(__dirname, '../assets/icon.png'),
@@ -35,15 +35,15 @@ app.on('ready', () => {
         store.set('window.isMaximized', win.isMaximized());
     });
 
-    win.on('maximize', () => win.webContents.send('maximize'));
-    win.on('unmaximize', () => win.webContents.send('unmaximize'));
-    win.on('enter-full-screen', () => win.webContents.send('enterFullScreen'));
-    win.on('leave-full-screen', () => win.webContents.send('leaveFullScreen'));
+    //win.on('maximize', () => win.webContents.send('maximize'));
+    //win.on('unmaximize', () => win.webContents.send('unmaximize'));
+    //win.on('enter-full-screen', () => win.webContents.send('enterFullScreen'));
+    //win.on('leave-full-screen', () => win.webContents.send('leaveFullScreen'));
 
-    ipcMain.on('close', () => win.close());
-    ipcMain.on('restore', () => win.unmaximize());
-    ipcMain.on('max', () => win.maximize());
-    ipcMain.on('min', () => win.minimize());
+    //ipcMain.on('close', () => win.close());
+    //ipcMain.on('restore', () => win.unmaximize());
+    //ipcMain.on('max', () => win.maximize());
+    //ipcMain.on('min', () => win.minimize());
     ipcMain.on('setConfig', (e, key, value) => store.set(key, value));
     ipcMain.on('resetConfig', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
     ipcMain.on('disableShortcuts', () => localShortcut.disableAll(win));

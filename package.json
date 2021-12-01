@@ -24,6 +24,7 @@
   "private": true,
   "scripts": {
     "start": "electron .",
-    "build": "node tasks/package.js"
+    "build": "node tasks/package.js",
+    "bundle": "node tasks/bundle.js"
   }
 }
