@@ -4,7 +4,7 @@ const config = {
     entryPoints: ['src/renderer/index.jsx'],
     bundle: true,
     outfile: 'app/index.js',
-    minify: true,
+    minify: false,
     watch: process.env.WATCH === 'true',
 };
 

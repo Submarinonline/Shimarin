@@ -1,8 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+const Settings = require('./pages/settings/index');
+
 ReactDOM.render(
-    <div>hi</div>
+    <Settings />
     ,
     document.getElementById('root')
 );

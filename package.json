@@ -9,6 +9,7 @@
     "electron-store": "^8.0.0"
   },
   "devDependencies": {
+    "@emotion/react": "^11.7.0",
     "cjp": "^1.2.3",
     "electron": "^13.1.7",
     "electron-packager": "^15.2.0",
@@ -23,7 +24,7 @@
   "main": "src/main.js",
   "private": true,
   "scripts": {
-    "start": "electron .",
+    "start": "npm run bundle && electron .",
     "build": "node tasks/package.js",
     "bundle": "node tasks/bundle.js"
   }
