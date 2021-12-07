@@ -8,8 +8,8 @@ module.exports = class Settings extends React.Component {
     render() {
         return (
             <>
-                <KeyConfig title='終了' _key='keyBind.quit' />
-                <KeyConfig title='リロード' _key='keyBind.reload' />
+                <KeyConfig label='終了' _key='keyBind.quit' />
+                <KeyConfig label='リロード' _key='keyBind.reload' />
             </>
         );
     }
