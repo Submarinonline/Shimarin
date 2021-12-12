@@ -1,10 +1,10 @@
 {
     "keyBind": {
         "quit": [
-            "CommandOrControl+Q"
+            "Control+Q"
         ],
         "reload": [
-            "CommandOrControl+R",
+            "Control+R",
             "F5"
         ],
         "fullscreen": [

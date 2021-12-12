@@ -7,7 +7,7 @@ module.exports = class KeyConfig extends React.Component {
         super(props);
         this.state = {
             items: [],
-            inputVal: ''
+            inputLabel: '追加'
         };
     }
     componentDidMount() {
@@ -24,15 +24,6 @@ module.exports = class KeyConfig extends React.Component {
             items: arr
         });
     }
-    addKeyBind() {
-        const arr = this.state.items;
-        arr.push(this.state.inputVal);
-        window.api.setConfig(this.props._key, arr);
-        this.setState({
-            items: arr,
-            inputVal: ''
-        });
-    }
     keyUp(e) {
         const res = [];
         let key;
@@ -47,8 +38,29 @@ module.exports = class KeyConfig extends React.Component {
 
         if (!key) return;
         res.push(key);
+        const str = res.join('+');
+
+        const arr = this.state.items;
+        if (arr.includes(str)) return e.target.blur();
+        arr.push(str);
+        window.api.setConfig(this.props._key, arr);
         this.setState({
-            inputVal: res.join('+')
+            items: arr,
+            inputLabel: '追加'
+        });
+
+        e.target.blur();
+    }
+    focus() {
+        window.api.disableShortcuts();
+        this.setState({
+            inputLabel: '...'
+        });
+    }
+    blur() {
+        window.api.enableShortcuts();
+        this.setState({
+            inputLabel: '追加'
         });
     }
     render() {
@@ -68,13 +80,14 @@ module.exports = class KeyConfig extends React.Component {
             `}>
                 <span>{this.props.label}</span>
                 <input
+                    css={css`
+                    `}
                     readOnly
-                    value={this.state.inputVal}
-                    onBlur={window.api.enableShortcuts}
-                    onFocus={window.api.disableShortcuts}
+                    value={this.state.inputLabel}
+                    onBlur={() => this.blur()}
+                    onFocus={() => this.focus()}
                     onKeyUp={(e) => this.keyUp(e)}
                 />
-                <button onClick={() => this.addKeyBind()}>追加</button>
                 {items}
             </div>
         );

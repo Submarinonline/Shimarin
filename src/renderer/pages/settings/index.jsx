@@ -8,8 +8,10 @@ module.exports = class Settings extends React.Component {
     render() {
         return (
             <>
-                <KeyConfig label='終了' _key='keyBind.quit' />
-                <KeyConfig label='リロード' _key='keyBind.reload' />
+                <KeyConfig label='アプリの終了' _key='keyBind.quit' />
+                <KeyConfig label='再読み込み' _key='keyBind.reload' />
+                <KeyConfig label='フルスクリーン切り替え' _key='keyBind.fullscreen' />
+                <KeyConfig label='DevToolsを開く' _key='keyBind.devtools' />
             </>
         );
     }
