@@ -24,7 +24,7 @@ module.exports = class KeyConfig extends React.Component {
             items: arr
         });
     }
-    keyUp(e) {
+    onKeyUp(e) {
         const res = [];
         let key;
         if (/CONTROL|SHIFT|ALT/i.test(e.key)) return;
@@ -51,13 +51,13 @@ module.exports = class KeyConfig extends React.Component {
 
         e.target.blur();
     }
-    focus() {
+    onFocus() {
         window.api.disableShortcuts();
         this.setState({
             inputLabel: '...'
         });
     }
-    blur() {
+    onBlur() {
         window.api.enableShortcuts();
         this.setState({
             inputLabel: '追加'
@@ -81,12 +81,18 @@ module.exports = class KeyConfig extends React.Component {
                 <span>{this.props.label}</span>
                 <input
                     css={css`
+                        text-align: center;
+                        padding: 0;
+                        width: 40px;
+                        &:focus {
+                            outline: none;
+                        }
                     `}
                     readOnly
                     value={this.state.inputLabel}
-                    onBlur={() => this.blur()}
-                    onFocus={() => this.focus()}
-                    onKeyUp={(e) => this.keyUp(e)}
+                    onBlur={() => this.onBlur()}
+                    onFocus={() => this.onFocus()}
+                    onKeyUp={(e) => this.onKeyUp(e)}
                 />
                 {items}
             </div>
