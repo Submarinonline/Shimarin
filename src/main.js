@@ -21,17 +21,25 @@ app.on('ready', () => {
         icon: path.join(__dirname, '../assets/icon.png'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
-            worldSafeExecuteJavaScript: true,
             contextIsolation: true,
             nodeIntegration: false,
         }
     });
 
+    const shortcuts = {
+        'keyBind.quit': () => win.close(),
+        'keyBind.reload': () => win.reload(),
+        'keyBind.fullscreen': () => win.setSimpleFullScreen(!win.isFullScreen()),
+        'keyBind.devtools': () => win.webContents.toggleDevTools()
+    };
+
     win.on('close', () => {
-        store.set('window.width', win.getSize()[0]);
-        store.set('window.height', win.getSize()[1]);
-        store.set('window.x', win.getPosition()[0]);
-        store.set('window.y', win.getPosition()[1]);
+        if (!(win.isMaximized() || win.isFullScreen())) {
+            store.set('window.width', win.getSize()[0]);
+            store.set('window.height', win.getSize()[1]);
+            store.set('window.x', win.getPosition()[0]);
+            store.set('window.y', win.getPosition()[1]);
+        }
         store.set('window.isMaximized', win.isMaximized());
     });
 
@@ -44,11 +52,13 @@ app.on('ready', () => {
     //ipcMain.on('restore', () => win.unmaximize());
     //ipcMain.on('max', () => win.maximize());
     //ipcMain.on('min', () => win.minimize());
+
     ipcMain.on('setConfig', (e, key, value) => store.set(key, value));
     ipcMain.on('resetConfig', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
+    ipcMain.handle('getConfig', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });
+
     ipcMain.on('disableShortcuts', () => localShortcut.disableAll(win));
     ipcMain.on('enableShortcuts', () => localShortcut.enableAll(win));
-    ipcMain.handle('getConfig', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });
 
     win.once('ready-to-show', () => {
         win.setMenu(null);
@@ -56,15 +66,8 @@ app.on('ready', () => {
         win.show();
     });
 
-    const shortcut = {
-        quit: () => win.close(),
-        reload: () => win.reload(),
-        fullscreen: () => win.setSimpleFullScreen(!win.isFullScreen()),
-        devtools: () => win.webContents.toggleDevTools()
-    };
-
-    for (const [name, func] of Object.entries(shortcut)) {
-        localShortcut.register(win, store.get(`keyBind.${name}`, dotProp.get(defaultConfig, `keyBind.${name}`)), func);
+    for (const [key, func] of Object.entries(shortcuts)) {
+        localShortcut.register(win, store.get(key, dotProp.get(defaultConfig, key)), func);
     }
 
     win.loadURL(`file://${path.join(__dirname, '../app/index.html')}`);

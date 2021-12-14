@@ -6,15 +6,15 @@
   "dependencies": {
     "dot-prop": "^6.0.1",
     "electron-localshortcut": "git+https://github.com/shaaaaaQ/electron-localshortcut.git#master",
-    "electron-store": "^8.0.0"
+    "electron-store": "^8.0.1"
   },
   "devDependencies": {
-    "@emotion/react": "^11.7.0",
+    "@emotion/react": "^11.7.1",
     "cjp": "^1.2.3",
-    "electron": "^13.1.7",
-    "electron-packager": "^15.2.0",
-    "esbuild": "^0.14.1",
-    "eslint": "^7.30.0",
+    "electron": "^16.0.4",
+    "electron-packager": "^15.4.0",
+    "esbuild": "^0.14.3",
+    "eslint": "^8.4.1",
     "eslint-plugin-react": "^7.27.1",
     "genhera": "^1.1.0",
     "react": "^17.0.2",
