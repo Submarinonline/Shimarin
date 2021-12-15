@@ -75,5 +75,5 @@ app.on('ready', () => {
         localShortcut.register(win, store.get(key, dotProp.get(defaultConfig, key)), func);
     }
 
-    win.loadURL(`file://${path.join(__dirname, '../app/index.html')}`);
+    win.loadURL(`file://${path.join(__dirname, './app/index.html')}`);
 });

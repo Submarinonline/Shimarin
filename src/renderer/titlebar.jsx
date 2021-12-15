@@ -20,8 +20,6 @@ module.exports = class CustomTitleBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false,
-            isFullScreen: false,
             isMaximize: false
         };
         window.api.onWindowMaximize(() => {
@@ -32,23 +30,6 @@ module.exports = class CustomTitleBar extends React.Component {
         window.api.onWindowUnmaximize(() => {
             this.setState({
                 isMaximize: false
-            });
-        });
-        window.api.onEnterFullScreen(() => {
-            this.setState({
-                isFullScreen: true
-            });
-        });
-        window.api.onLeaveFullScreen(() => {
-            this.setState({
-                isFullScreen: false
-            });
-        });
-    }
-    componentDidMount() {
-        window.api.getConfig('customTitleBar').then(v => {
-            this.setState({
-                show: v
             });
         });
     }
@@ -66,7 +47,6 @@ module.exports = class CustomTitleBar extends React.Component {
     }
     render() {
         return (
-            this.state.show && !this.state.isFullScreen &&
             <div css={theme => css`
                 -webkit-app-region: drag;
                 user-select: none;
@@ -81,7 +61,7 @@ module.exports = class CustomTitleBar extends React.Component {
                     margin-left: auto;
                     height: 36px;
                 `}>
-                    <div onClick={() => this.minimize()} css={[
+                    <div onClick={this.minimize} css={[
                         windowCtlButton,
                         css`
                             grid-column: 1;
@@ -98,7 +78,7 @@ module.exports = class CustomTitleBar extends React.Component {
                     </div>
                     {
                         this.state.isMaximize ?
-                            <div onClick={() => this.unmaximize()} css={[
+                            <div onClick={this.unmaximize} css={[
                                 windowCtlButton,
                                 css`
                                     grid-column: 2;
@@ -113,7 +93,7 @@ module.exports = class CustomTitleBar extends React.Component {
                                     <path d="M11 9H9v2H0V2h2V0h9zM8 3H1v7h7zm2-2H3v1h6v6h1z" />
                                 </svg>
                             </div> :
-                            <div onClick={() => this.maximize()} css={[
+                            <div onClick={this.maximize} css={[
                                 windowCtlButton,
                                 css`
                                     grid-column: 2;
@@ -129,7 +109,7 @@ module.exports = class CustomTitleBar extends React.Component {
                                 </svg>
                             </div>
                     }
-                    <div onClick={() => this.close()} css={[
+                    <div onClick={this.close} css={[
                         windowCtlButton,
                         theme => css`
                             grid-column: 3;

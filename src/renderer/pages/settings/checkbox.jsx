@@ -5,6 +5,7 @@ const { css, jsx } = require('@emotion/react');
 module.exports = class CheckBox extends React.Component {
     constructor(props) {
         super(props);
+        this.onChange = this.onChange.bind(this);
         this.state = {
             checked: false
         };
@@ -33,7 +34,7 @@ module.exports = class CheckBox extends React.Component {
                     readOnly
                     type='checkbox'
                     checked={this.state.checked}
-                    onChange={(e) => this.onChange(e)}
+                    onChange={this.onChange}
                 />
                 <span>{this.props.label}</span>
             </div>

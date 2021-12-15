@@ -5,6 +5,10 @@ const { css, jsx } = require('@emotion/react');
 module.exports = class KeyConfig extends React.Component {
     constructor(props) {
         super(props);
+        this.removeKeyBind = this.removeKeyBind.bind(this);
+        this.onKeyUp = this.onKeyUp.bind(this);
+        this.onFocus = this.onFocus.bind(this);
+        this.onBlur = this.onBlur.bind(this);
         this.state = {
             items: [],
             inputLabel: '追加'
@@ -17,7 +21,8 @@ module.exports = class KeyConfig extends React.Component {
             });
         });
     }
-    removeKeyBind(accelerator) {
+    removeKeyBind(e) {
+        const accelerator = e.target.dataset.accelerator;
         const arr = this.state.items.filter(a => a !== accelerator);
         window.api.setConfig(this.props._key, arr);
         window.api.unregisterShortcut(accelerator, this.props._key);
@@ -73,7 +78,7 @@ module.exports = class KeyConfig extends React.Component {
             items.push(
                 <div key={accelerator}>
                     <span>{accelerator}</span>
-                    <button onClick={() => this.removeKeyBind(accelerator)}>削除</button>
+                    <button data-accelerator={accelerator} onClick={this.removeKeyBind}>削除</button>
                 </div>
             );
         });
@@ -94,9 +99,9 @@ module.exports = class KeyConfig extends React.Component {
                     `}
                     readOnly
                     value={this.state.inputLabel}
-                    onBlur={() => this.onBlur()}
-                    onFocus={() => this.onFocus()}
-                    onKeyUp={(e) => this.onKeyUp(e)}
+                    onBlur={this.onBlur}
+                    onFocus={this.onFocus}
+                    onKeyUp={this.onKeyUp}
                 />
                 {items}
             </div>
