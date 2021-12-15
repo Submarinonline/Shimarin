@@ -13,8 +13,8 @@ app.on('ready', () => {
         height: store.get('window.height', dotProp.get(defaultConfig, 'window.height')),
         x: store.get('window.x'),
         y: store.get('window.y'),
-        //minWidth: 535,
-        //minHeight: 300,
+        minWidth: 535,
+        minHeight: 300,
         frame: !store.get('customTitleBar', dotProp.get(defaultConfig, 'customTitleBar')),
         show: false,
         title: 'Shimarin',
@@ -43,13 +43,13 @@ app.on('ready', () => {
         store.set('window.isMaximized', win.isMaximized());
     });
 
-    //ipcMain.on('window-close', () => win.close());
-    //ipcMain.on('window-unmaximize', () => win.unmaximize());
-    //ipcMain.on('window-maximize', () => win.maximize());
-    //ipcMain.on('window-minimize', () => win.minimize());
+    ipcMain.on('window-close', () => win.close());
+    ipcMain.on('window-unmaximize', () => win.unmaximize());
+    ipcMain.on('window-maximize', () => win.maximize());
+    ipcMain.on('window-minimize', () => win.minimize());
 
-    //win.on('maximize', () => win.webContents.send('window-maximize'));
-    //win.on('unmaximize', () => win.webContents.send('window-unmaximize'));
+    win.on('maximize', () => win.webContents.send('window-maximize'));
+    win.on('unmaximize', () => win.webContents.send('window-unmaximize'));
 
     win.on('enter-full-screen', () => win.webContents.send('enter-full-screen'));
     win.on('leave-full-screen', () => win.webContents.send('leave-full-screen'));
