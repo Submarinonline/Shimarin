@@ -15,7 +15,7 @@ app.on('ready', () => {
         y: store.get('window.y'),
         //minWidth: 535,
         //minHeight: 300,
-        //frame: false,
+        frame: !store.get('customTitleBar', dotProp.get(defaultConfig, 'customTitleBar')),
         show: false,
         title: 'Shimarin',
         icon: path.join(__dirname, '../assets/icon.png'),
@@ -50,8 +50,9 @@ app.on('ready', () => {
 
     //win.on('maximize', () => win.webContents.send('window-maximize'));
     //win.on('unmaximize', () => win.webContents.send('window-unmaximize'));
-    //win.on('enter-full-screen', () => win.webContents.send('enter-full-screen'));
-    //win.on('leave-full-screen', () => win.webContents.send('leave-full-screen'));
+
+    win.on('enter-full-screen', () => win.webContents.send('enter-full-screen'));
+    win.on('leave-full-screen', () => win.webContents.send('leave-full-screen'));
 
     ipcMain.on('set-config', (e, key, value) => store.set(key, value));
     ipcMain.on('reset-config', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));

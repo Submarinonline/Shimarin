@@ -1,4 +1,5 @@
 {
+    "customTitleBar": false,
     "keyBind": {
         "quit": [
             "Control+Q"
