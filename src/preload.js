@@ -3,24 +3,24 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld(
     'api',
     {
-        //close: () => ipcRenderer.send('close'),
-        //restore: () => ipcRenderer.send('restore'),
-        //max: () => ipcRenderer.send('max'),
-        //min: () => ipcRenderer.send('min'),
+        //windowClose: () => ipcRenderer.send('window-close'),
+        //windowUnmaximize: () => ipcRenderer.send('window-unmaximize'),
+        //windowMaximize: () => ipcRenderer.send('window-maximize'),
+        //windowMinimize: () => ipcRenderer.send('window-minimize'),
 
-        //maximize: (func) => ipcRenderer.on('maximize', () => func()),
-        //unmaximize: (func) => ipcRenderer.on('unmaximize', () => func()),
-        //enterFullScreen: (func) => ipcRenderer.on('enterFullScreen', () => func()),
-        //leaveFullScreen: (func) => ipcRenderer.on('leaveFullScreen', () => func()),
+        //onWindowMaximize: (func) => ipcRenderer.on('window-maximize', () => func()),
+        //onWindowUnmaximize: (func) => ipcRenderer.on('window-unmaximize', () => func()),
+        //onEnterFullScreen: (func) => ipcRenderer.on('enter-full-screen', () => func()),
+        //onLeaveFullScreen: (func) => ipcRenderer.on('leave-full-screen', () => func()),
 
-        setConfig: (key, value) => ipcRenderer.send('setConfig', key, value),
-        resetConfig: (key) => ipcRenderer.send('resetConfig', key),
-        getConfig: (key) => ipcRenderer.invoke('getConfig', key),
+        setConfig: (key, value) => ipcRenderer.send('set-config', key, value),
+        resetConfig: (key) => ipcRenderer.send('reset-config', key),
+        getConfig: (key) => ipcRenderer.invoke('get-config', key),
 
-        registerShortcut: (accelerator, key) => ipcRenderer.send('registerShortcut', accelerator, key),
-        unregisterShortcut: (accelerator, key) => ipcRenderer.send('unregisterShortcut', accelerator, key),
+        registerShortcut: (accelerator, key) => ipcRenderer.send('register-shortcut', accelerator, key),
+        unregisterShortcut: (accelerator, key) => ipcRenderer.send('unregister-shortcut', accelerator, key),
 
-        disableShortcuts: () => ipcRenderer.send('disableShortcuts'),
-        enableShortcuts: () => ipcRenderer.send('enableShortcuts'),
+        disableShortcuts: () => ipcRenderer.send('disable-shortcuts'),
+        enableShortcuts: () => ipcRenderer.send('enable-shortcuts'),
     }
 );

@@ -43,25 +43,25 @@ app.on('ready', () => {
         store.set('window.isMaximized', win.isMaximized());
     });
 
-    //win.on('maximize', () => win.webContents.send('maximize'));
-    //win.on('unmaximize', () => win.webContents.send('unmaximize'));
-    //win.on('enter-full-screen', () => win.webContents.send('enterFullScreen'));
-    //win.on('leave-full-screen', () => win.webContents.send('leaveFullScreen'));
+    //win.on('maximize', () => win.webContents.send('window-maximize'));
+    //win.on('unmaximize', () => win.webContents.send('window-unmaximize'));
+    //win.on('enter-full-screen', () => win.webContents.send('enter-full-screen'));
+    //win.on('leave-full-screen', () => win.webContents.send('leave-full-screen'));
 
-    //ipcMain.on('close', () => win.close());
-    //ipcMain.on('restore', () => win.unmaximize());
-    //ipcMain.on('max', () => win.maximize());
-    //ipcMain.on('min', () => win.minimize());
+    //ipcMain.on('window-close', () => win.close());
+    //ipcMain.on('window-unmaximize', () => win.unmaximize());
+    //ipcMain.on('window-maximize', () => win.maximize());
+    //ipcMain.on('window-minimize', () => win.minimize());
 
-    ipcMain.on('setConfig', (e, key, value) => store.set(key, value));
-    ipcMain.on('resetConfig', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
-    ipcMain.handle('getConfig', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });
+    ipcMain.on('set-config', (e, key, value) => store.set(key, value));
+    ipcMain.on('reset-config', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
+    ipcMain.handle('get-config', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });
 
-    ipcMain.on('registerShortcut', (e, accelerator, key) => localShortcut.register(win, accelerator, shortcuts[key]));
-    ipcMain.on('unregisterShortcut', (e, accelerator, key) => localShortcut.unregister(win, accelerator, shortcuts[key]));
+    ipcMain.on('register-shortcut', (e, accelerator, key) => localShortcut.register(win, accelerator, shortcuts[key]));
+    ipcMain.on('unregister-shortcut', (e, accelerator, key) => localShortcut.unregister(win, accelerator, shortcuts[key]));
 
-    ipcMain.on('disableShortcuts', () => localShortcut.disableAll(win));
-    ipcMain.on('enableShortcuts', () => localShortcut.enableAll(win));
+    ipcMain.on('disable-shortcuts', () => localShortcut.disableAll(win));
+    ipcMain.on('enable-shortcuts', () => localShortcut.enableAll(win));
 
     win.once('ready-to-show', () => {
         win.setMenu(null);
