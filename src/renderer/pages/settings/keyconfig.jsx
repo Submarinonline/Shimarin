@@ -17,9 +17,10 @@ module.exports = class KeyConfig extends React.Component {
             });
         });
     }
-    removeKeyBind(val) {
-        const arr = this.state.items.filter(v => v !== val);
+    removeKeyBind(accelerator) {
+        const arr = this.state.items.filter(a => a !== accelerator);
         window.api.setConfig(this.props._key, arr);
+        window.api.unregisterShortcut(accelerator, this.props._key);
         this.setState({
             items: arr
         });
@@ -38,12 +39,15 @@ module.exports = class KeyConfig extends React.Component {
 
         if (!key) return;
         res.push(key);
-        const str = res.join('+');
+
+        const accelerator = res.join('+');
 
         const arr = this.state.items;
-        if (arr.includes(str)) return e.target.blur();
-        arr.push(str);
+        if (arr.includes(accelerator)) return e.target.blur();
+        arr.push(accelerator);
+
         window.api.setConfig(this.props._key, arr);
+        window.api.registerShortcut(accelerator, this.props._key);
         this.setState({
             items: arr,
             inputLabel: '追加'
@@ -65,11 +69,11 @@ module.exports = class KeyConfig extends React.Component {
     }
     render() {
         const items = [];
-        this.state.items.forEach(value => {
+        this.state.items.forEach(accelerator => {
             items.push(
-                <div key={value}>
-                    <span>{value}</span>
-                    <button onClick={() => this.removeKeyBind(value)}>削除</button>
+                <div key={accelerator}>
+                    <span>{accelerator}</span>
+                    <button onClick={() => this.removeKeyBind(accelerator)}>削除</button>
                 </div>
             );
         });

@@ -57,6 +57,9 @@ app.on('ready', () => {
     ipcMain.on('resetConfig', (e, key) => store.set(key, dotProp.get(defaultConfig, key)));
     ipcMain.handle('getConfig', (e, key) => { return store.get(key, dotProp.get(defaultConfig, key)); });
 
+    ipcMain.on('registerShortcut', (e, accelerator, key) => localShortcut.register(win, accelerator, shortcuts[key]));
+    ipcMain.on('unregisterShortcut', (e, accelerator, key) => localShortcut.unregister(win, accelerator, shortcuts[key]));
+
     ipcMain.on('disableShortcuts', () => localShortcut.disableAll(win));
     ipcMain.on('enableShortcuts', () => localShortcut.enableAll(win));
 
