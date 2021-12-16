@@ -4,8 +4,7 @@ const { ThemeProvider, css, jsx } = require('@emotion/react');
 
 const TitleBar = require('./titlebar');
 const SideBar = require('./sidebar');
-
-const Settings = require('./pages/settings/index');
+const Content = require('./content');
 
 const theme = require('./theme');
 
@@ -43,25 +42,12 @@ module.exports = class App extends React.Component {
     render() {
         return (
             <ThemeProvider theme={this.state.theme}>
+                {this.state.showTitleBar && !this.state.isFullScreen && <TitleBar />}
                 <div css={css`
-                    height: 100%;
-                    overflow: hidden;
+                    height: ${this.state.showTitleBar && !this.state.isFullScreen ? 'calc(100% - 36px)' : '100%'};
                 `}>
-                    {this.state.showTitleBar && !this.state.isFullScreen && <TitleBar />}
-                    <div css={css`
-                        height: ${this.state.showTitleBar && !this.state.isFullScreen ? 'calc(100% - 36px)' : '100%'};
-                        display: inline-block;
-                    `}>
-                        <SideBar />
-                    </div>
-                    <div css={css`
-                        height: ${this.state.showTitleBar && !this.state.isFullScreen ? 'calc(100% - 36px)' : '100%'};
-                        width: calc(100% - 80px);
-                        display: inline-block;
-                        overflow: auto;
-                    `}>
-                        <Settings />
-                    </div>
+                    <SideBar />
+                    <Content />
                 </div>
             </ThemeProvider>
         );
