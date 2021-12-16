@@ -8,15 +8,15 @@ const windowCtlButton = theme => css`
     align-items: center;
     justify-content: center;
     &:hover {
-        background: ${theme.customTitleBar.ctlHover};
+        background: ${theme.titleBar.ctlHover};
     }
 `;
 
 const windowCtlSVG = theme => css`
-    fill: ${theme.customTitleBar.color};
+    fill: ${theme.titleBar.color};
 `;
 
-module.exports = class CustomTitleBar extends React.Component {
+module.exports = class TitleBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,7 +52,7 @@ module.exports = class CustomTitleBar extends React.Component {
                 user-select: none;
                 height: 36px;
                 display: flex;
-                background: ${theme.customTitleBar.bg};
+                background: ${theme.titleBar.bg};
             `}>
                 <div css={css`
                     -webkit-app-region: no-drag;
@@ -114,9 +114,9 @@ module.exports = class CustomTitleBar extends React.Component {
                         theme => css`
                             grid-column: 3;
                             &:hover {
-                                background: ${theme.customTitleBar.closeHover};
+                                background: ${theme.titleBar.closeHover};
                                 & > svg {
-                                    fill: ${theme.customTitleBar.closeHoverColor};
+                                    fill: ${theme.titleBar.closeHoverColor};
                                 }
                             }
                         `

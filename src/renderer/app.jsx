@@ -2,7 +2,8 @@
 const React = require('react');
 const { ThemeProvider, css, jsx } = require('@emotion/react');
 
-const CustomTitleBar = require('./titlebar');
+const TitleBar = require('./titlebar');
+const SideBar = require('./sidebar');
 
 const Settings = require('./pages/settings/index');
 
@@ -46,9 +47,17 @@ module.exports = class App extends React.Component {
                     height: 100%;
                     overflow: hidden;
                 `}>
-                    {this.state.showTitleBar && !this.state.isFullScreen && <CustomTitleBar />}
+                    {this.state.showTitleBar && !this.state.isFullScreen && <TitleBar />}
                     <div css={css`
                         height: ${this.state.showTitleBar && !this.state.isFullScreen ? 'calc(100% - 36px)' : '100%'};
+                        display: inline-block;
+                    `}>
+                        <SideBar />
+                    </div>
+                    <div css={css`
+                        height: ${this.state.showTitleBar && !this.state.isFullScreen ? 'calc(100% - 36px)' : '100%'};
+                        width: calc(100% - 80px);
+                        display: inline-block;
                         overflow: auto;
                     `}>
                         <Settings />

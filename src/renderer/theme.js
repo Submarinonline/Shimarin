@@ -1,6 +1,6 @@
 module.exports = {
     light: {
-        customTitleBar: {
+        titleBar: {
             bg: '#dfdfdf',
             color: '#000000',
             ctlHover: '#b9b9b9',
@@ -9,7 +9,7 @@ module.exports = {
         }
     },
     dark: {
-        customTitleBar: {
+        titleBar: {
             bg: '#414141',
             color: '#fff',
             ctlHover: '#373737',
