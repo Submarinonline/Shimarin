@@ -37,12 +37,13 @@ module.exports = class KeyConfig extends React.Component {
         if (e.ctrlKey) res.push('Control');
         if (e.shiftKey) res.push('Shift');
         if (e.altKey) res.push('Alt');
-        // ここに矢印キーとかを追加
+        // ここに矢印キーとかを追加(https://www.electronjs.org/docs/latest/api/accelerator)
         //console.log(e.key);
-        if (/^[A-Z]$/i.test(e.key)) { key = e.key.toUpperCase(); }
-        if (/^[0-9]$/i.test(e.key)) { key = e.key; }
+        //if (/^[A-Z]$/i.test(e.key)) { key = e.key.toUpperCase(); }
+        //if (/^[0-9]$/i.test(e.key)) { key = e.key; }
 
-        if (!key) return;
+        if (!key) key = e.key.toUpperCase();
+
         res.push(key);
 
         const accelerator = res.join('+');
@@ -88,21 +89,14 @@ module.exports = class KeyConfig extends React.Component {
                 border: 1px solid #000;
             `}>
                 <span>{this.props.label}</span>
-                <input
+                <span
                     css={css`
-                        text-align: center;
-                        padding: 0;
-                        width: 40px;
-                        &:focus {
-                            outline: none;
-                        }
                     `}
-                    readOnly
-                    value={this.state.inputLabel}
+                    tabIndex='-1'
                     onBlur={this.onBlur}
                     onFocus={this.onFocus}
                     onKeyUp={this.onKeyUp}
-                />
+                >{this.state.inputLabel}</span>
                 {items}
             </div>
         );
