@@ -43,6 +43,8 @@ app.on('ready', () => {
         store.set('window.isMaximized', win.isMaximized());
     });
 
+    ipcMain.on('set-background-color', (e, color) => win.setBackgroundColor(color));
+
     ipcMain.on('window-close', () => win.close());
     ipcMain.on('window-unmaximize', () => win.unmaximize());
     ipcMain.on('window-maximize', () => win.maximize());

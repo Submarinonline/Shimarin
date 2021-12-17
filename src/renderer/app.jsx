@@ -16,10 +16,11 @@ module.exports = class App extends React.Component {
             showTitleBar: false,
             isFullScreen: false
         };
+        window.api.setBackgroundColor(this.state.theme.bg);
         window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
             this.setState({
                 theme: e.matches ? theme.light : theme.dark
-            });
+            }, () => window.api.setBackgroundColor(this.state.theme.bg));
         });
         window.api.onEnterFullScreen(() => {
             this.setState({

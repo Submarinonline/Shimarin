@@ -3,6 +3,7 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld(
     'api',
     {
+        setBackgroundColor: (color) => ipcRenderer.send('set-background-color', color),
         windowClose: () => ipcRenderer.send('window-close'),
         windowUnmaximize: () => ipcRenderer.send('window-unmaximize'),
         windowMaximize: () => ipcRenderer.send('window-maximize'),

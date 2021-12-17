@@ -3,6 +3,7 @@ const React = require('react');
 const { Routes, Route } = require('react-router-dom');
 const { css, jsx } = require('@emotion/react');
 
+const Generator = require('./pages/generator/index');
 const Settings = require('./pages/settings/index');
 
 module.exports = class Content extends React.Component {
@@ -16,6 +17,7 @@ module.exports = class Content extends React.Component {
             `}>
                 <Routes>
                     <Route path='/' element={<div>hi</div>} />
+                    <Route path='/generator' element={<Generator />} />
                     <Route path='/settings' element={<Settings />} />
                 </Routes>
             </div>
