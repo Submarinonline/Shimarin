@@ -11,11 +11,11 @@ module.exports = class Content extends React.Component {
             <div css={css`
                 display: inline-block;
                 height: 100%;
-                width: calc(100% - 80px);
+                width: calc(100% - 70px);
                 overflow: auto;
             `}>
                 <Routes>
-                    <Route path='/' element={<div />} />
+                    <Route path='/' element={<div>hi</div>} />
                     <Route path='/settings' element={<Settings />} />
                 </Routes>
             </div>
