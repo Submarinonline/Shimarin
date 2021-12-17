@@ -25,7 +25,7 @@
   "main": "src/main.js",
   "private": true,
   "scripts": {
-    "start": "npm run bundle && electron .",
+    "start": "electron .",
     "build": "node tasks/package.js",
     "bundle": "node tasks/bundle.js"
   }
