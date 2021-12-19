@@ -1,8 +1,8 @@
 module.exports = {
     light: {
-        bg: '#dfdfdf',
+        bg: '#FAFAFA',
         titleBar: {
-            bg: '#dfdfdf',
+            bg: '#E0E0E0',
             color: '#000',
             ctlHover: 'rgba(0, 0, 0, .2)',
             closeHover: '#41ADEF',
@@ -13,6 +13,7 @@ module.exports = {
             hover: 'rgba(255, 255, 255, .2)',
             color: '#fff'
         },
+        // 仮
         generator: {
             color: '#000',
             border: '#41ADEF',
@@ -20,23 +21,24 @@ module.exports = {
         }
     },
     dark: {
-        bg: '#414141',
+        bg: '#303030',
         titleBar: {
-            bg: '#414141',
+            bg: '#000',
             color: '#fff',
-            ctlHover: 'rgba(0, 0, 0, .2)',
+            ctlHover: 'rgba(255, 255, 255, .1)',
             closeHover: '#41ADEF',
             closeHoverColor: '#fff'
         },
         sideBar: {
-            bg: '#121212',
+            bg: '#212121',
             hover: 'rgba(255, 255, 255, .1)',
             color: '#81878E'
         },
+        // 仮
         generator: {
             color: '#fff',
             border: '#41ADEF',
-            bg: '#121212'
+            bg: '#424242'
         }
     }
 };
