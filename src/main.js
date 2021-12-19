@@ -4,7 +4,7 @@ const localShortcut = require('electron-localshortcut');
 const Store = require('electron-store');
 const dotProp = require('dot-prop');
 
-const defaultConfig = require('./default.json');
+const defaultConfig = require('./config.json');
 const store = new Store();
 
 app.on('ready', () => {

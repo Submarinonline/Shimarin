@@ -11,6 +11,7 @@
   "devDependencies": {
     "@emotion/react": "^11.7.1",
     "cjp": "^1.2.3",
+    "cross-env": "^7.0.3",
     "electron": "^16.0.4",
     "electron-packager": "^15.4.0",
     "esbuild": "^0.14.3",
@@ -26,7 +27,7 @@
   "private": true,
   "scripts": {
     "start": "electron .",
-    "build": "node tasks/package.js",
+    "build": "cross-env NODE_ENV=production node tasks/bundle.js && node tasks/package.js",
     "bundle": "node tasks/bundle.js"
   }
 }

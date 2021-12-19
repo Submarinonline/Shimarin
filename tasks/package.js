@@ -12,7 +12,8 @@ const opt = {
 
 packager(opt);
 
-/*const linux = {
+/*
+const linux = {
     dir: '.',
     out: 'out',
     arch: 'x64',
@@ -20,5 +21,6 @@ packager(opt);
     overwrite: true,
     icon: 'icon/icon.png',
     ignore: '(.vscode|.gitignore|tasks|package-lock.json|.eslintrc.js)',
-};*/
-//packager(linux);
+};
+packager(linux);
+*/
