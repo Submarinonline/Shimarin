@@ -28,6 +28,7 @@
   "scripts": {
     "start": "electron .",
     "build": "cross-env NODE_ENV=production node tasks/bundle.js && node tasks/package.js",
-    "bundle": "node tasks/bundle.js"
+    "bundle": "node tasks/bundle.js",
+    "watch": "cross-env WATCH=true node  tasks/bundle.js"
   }
 }

@@ -5,17 +5,21 @@ const cjp = require('cjp');
 const mhr = require('genhera');
 
 const button = theme => css`
-    color: ${theme.generator.color};
+    color: ${theme.button.color1};
     padding: 0px;
     height: 30px;
     width: calc(25% - 10px);
     border-radius: 10px;
-    border: 2px solid ${theme.generator.border};
-    background: ${theme.generator.bg};
+    border: none;
+    background: ${theme.button.bg1};
     margin-left: 5px;
     margin-right: 5px;
     &:focus {
         outline: none;
+        background: ${theme.button.hover1};
+    }
+    &:hover {
+        background: ${theme.button.hover1};
     }
 `;
 
@@ -25,10 +29,9 @@ const textarea = theme => css`
     padding: 5px;
     width: calc(50% - 10px);
     height: calc(100% - 20px);
-    border: 2px solid ${theme.generator.border};
     border-radius: 10px;
-    background: ${theme.generator.bg};
-    color: ${theme.generator.color};
+    background: ${theme.textarea.bg1};
+    color: ${theme.textarea.color1};
     overflow: hidden;
     resize: none;
     &:focus {
@@ -100,12 +103,11 @@ module.exports = class Generator extends React.Component {
                     display: flex;
                 `}>
                     <select css={theme => css`
-                        color: ${theme.generator.color};
+                        color: ${theme.select.color1};
                         width: calc(50% - 10px);
                         height: 30px;
                         border-radius: 10px;
-                        border: 2px solid ${theme.generator.border};
-                        background: ${theme.generator.bg};
+                        background: ${theme.select.bg1};
                         margin-left: 5px;
                         margin-right: 5px;
                         &:focus {
